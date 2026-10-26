@@ -1,0 +1,1104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101010">
+<title>Brad's Songbook</title>
+<style>
+:root{--bg:#101010;--panel:#101010;--line:#343434;--muted:#a6a6a6;--text:#f5f2ec;--accent:#d5b783}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{padding:27px 18px 15px;max-width:900px;margin:auto}
+.eyebrow{color:var(--accent);font-size:.75rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+h1{margin:6px 0 4px;font-size:clamp(2rem,7vw,3.1rem);line-height:1.05;letter-spacing:-.04em}
+.sub{margin:8px 0 10px;color:var(--muted)}
+.search-wrap{position:sticky;top:0;z-index:5;padding:10px 16px;background:rgba(16,16,16,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+.search-inner{max-width:900px;margin:auto;display:flex;gap:10px}
+input{min-width:0;flex:1;padding:13px 15px;border:1px solid #414141;border-radius:10px;background:#202020;color:var(--text);font:inherit;outline:none}
+input:focus{border-color:var(--accent);box-shadow:0 0 0 3px #d5b78322}
+button{border:1px solid #414141;border-radius:10px;padding:0 14px;background:#252525;color:var(--text);font:inherit;cursor:pointer}
+main{max-width:900px;margin:auto;padding:12px 16px 50px}
+.meta{display:flex;justify-content:space-between;gap:12px;margin:0 2px 16px;color:var(--muted);font-size:.88rem}
+.artist-group{margin:0 0 25px}
+.artist-name{margin:0;padding:0 0 12px;border-bottom:1px solid var(--line);color:var(--accent);font-size:1.02rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+.song-list{list-style:none;padding:0;margin:0}
+.song{padding:13px 6px;border-bottom:1px solid var(--line);font-size:1.12rem;font-weight:550;overflow-wrap:anywhere}
+.artist-group[hidden],.song[hidden]{display:none}
+.empty{display:none;text-align:center;padding:35px 10px;color:var(--muted)}
+@media(min-width:650px){.song{font-size:1.15rem;padding:14px 8px}}
+@media(max-width:480px){header{padding-top:22px}.artist-name{font-size:.95rem}.song{padding:12px 5px}}
+</style>
+</head>
+<body>
+<header><div class="eyebrow">Live repertoire</div><h1>Brad's Songbook</h1><p class="sub">Artists A–Z · Songs listed below each artist</p></header>
+<div class="search-wrap"><div class="search-inner"><input id="search" type="search" placeholder="Search songs or artists..." aria-label="Search songs or artists" autocomplete="off"><button id="clear" type="button">Clear</button></div></div>
+<main><div class="meta"><span id="count">273 songs</span><span>Artist A–Z</span></div><div id="list">
+<section class="artist-group" data-search="4 non blondes">
+<h2 class="artist-name">4 Non Blondes</h2>
+<ul class="song-list">
+<li class="song" data-search="what&#x27;s up? 4 non blondes">What&#x27;s Up?</li>
+</ul></section>
+<section class="artist-group" data-search="a-ha">
+<h2 class="artist-name">a-ha</h2>
+<ul class="song-list">
+<li class="song" data-search="take on me a-ha">Take on Me</li>
+</ul></section>
+<section class="artist-group" data-search="ac/dc">
+<h2 class="artist-name">AC/DC</h2>
+<ul class="song-list">
+<li class="song" data-search="you shook me all night long ac/dc">You Shook Me All Night Long</li>
+</ul></section>
+<section class="artist-group" data-search="adele">
+<h2 class="artist-name">Adele</h2>
+<ul class="song-list">
+<li class="song" data-search="make you feel my love adele">Make You Feel My Love</li>
+</ul></section>
+<section class="artist-group" data-search="alabama">
+<h2 class="artist-name">Alabama</h2>
+<ul class="song-list">
+<li class="song" data-search="i&#x27;m in a hurry (and don&#x27;t know why) alabama">I&#x27;m in a Hurry (And Don&#x27;t Know Why)</li>
+</ul></section>
+<section class="artist-group" data-search="alan jackson">
+<h2 class="artist-name">Alan Jackson</h2>
+<ul class="song-list">
+<li class="song" data-search="it&#x27;s five o&#x27;clock somewhere alan jackson">It&#x27;s Five O&#x27;Clock Somewhere</li>
+</ul></section>
+<section class="artist-group" data-search="aloe blacc">
+<h2 class="artist-name">Aloe Blacc</h2>
+<ul class="song-list">
+<li class="song" data-search="wake me up - acoustic aloe blacc">Wake Me Up - Acoustic</li>
+</ul></section>
+<section class="artist-group" data-search="america">
+<h2 class="artist-name">America</h2>
+<ul class="song-list">
+<li class="song" data-search="a horse with no name america">A Horse with No Name</li>
+</ul></section>
+<section class="artist-group" data-search="avril lavigne">
+<h2 class="artist-name">Avril Lavigne</h2>
+<ul class="song-list">
+<li class="song" data-search="complicated avril lavigne">Complicated</li>
+</ul></section>
+<section class="artist-group" data-search="ben e. king">
+<h2 class="artist-name">Ben E. King</h2>
+<ul class="song-list">
+<li class="song" data-search="stand by me ben e. king">Stand By Me</li>
+</ul></section>
+<section class="artist-group" data-search="billie eilish">
+<h2 class="artist-name">Billie Eilish</h2>
+<ul class="song-list">
+<li class="song" data-search="birds of a feather billie eilish">BIRDS OF A FEATHER</li>
+</ul></section>
+<section class="artist-group" data-search="billy joel">
+<h2 class="artist-name">Billy Joel</h2>
+<ul class="song-list">
+<li class="song" data-search="movin&#x27; out (anthony&#x27;s song) billy joel">Movin&#x27; Out (Anthony&#x27;s Song)</li>
+<li class="song" data-search="my life billy joel">My Life</li>
+</ul></section>
+<section class="artist-group" data-search="blake shelton">
+<h2 class="artist-name">Blake Shelton</h2>
+<ul class="song-list">
+<li class="song" data-search="some beach blake shelton">Some Beach</li>
+</ul></section>
+<section class="artist-group" data-search="bob dylan">
+<h2 class="artist-name">Bob Dylan</h2>
+<ul class="song-list">
+<li class="song" data-search="don&#x27;t think twice, it&#x27;s all right bob dylan">Don&#x27;t Think Twice, It&#x27;s All Right</li>
+</ul></section>
+<section class="artist-group" data-search="bob marley &amp; the wailers">
+<h2 class="artist-name">Bob Marley &amp; The Wailers</h2>
+<ul class="song-list">
+<li class="song" data-search="is this love bob marley &amp; the wailers">Is This Love</li>
+</ul></section>
+<section class="artist-group" data-search="bob seger">
+<h2 class="artist-name">Bob Seger</h2>
+<ul class="song-list">
+<li class="song" data-search="old time rock &amp; roll bob seger">Old Time Rock &amp; Roll</li>
+</ul></section>
+<section class="artist-group" data-search="bon jovi">
+<h2 class="artist-name">Bon Jovi</h2>
+<ul class="song-list">
+<li class="song" data-search="livin&#x27; on a prayer bon jovi">Livin&#x27; On A Prayer</li>
+</ul></section>
+<section class="artist-group" data-search="brooks &amp; dunn">
+<h2 class="artist-name">Brooks &amp; Dunn</h2>
+<ul class="song-list">
+<li class="song" data-search="boot scootin&#x27; boogie brooks &amp; dunn">Boot Scootin&#x27; Boogie</li>
+<li class="song" data-search="neon moon brooks &amp; dunn">Neon Moon</li>
+</ul></section>
+<section class="artist-group" data-search="bruce springsteen">
+<h2 class="artist-name">Bruce Springsteen</h2>
+<ul class="song-list">
+<li class="song" data-search="dancing in the dark bruce springsteen">Dancing In the Dark</li>
+<li class="song" data-search="i&#x27;m on fire bruce springsteen">I&#x27;m On Fire</li>
+</ul></section>
+<section class="artist-group" data-search="bruno mars">
+<h2 class="artist-name">Bruno Mars</h2>
+<ul class="song-list">
+<li class="song" data-search="just the way you are bruno mars">Just the Way You Are</li>
+<li class="song" data-search="marry you bruno mars">Marry You</li>
+<li class="song" data-search="when i was your man bruno mars">When I Was Your Man</li>
+</ul></section>
+<section class="artist-group" data-search="bryan adams">
+<h2 class="artist-name">Bryan Adams</h2>
+<ul class="song-list">
+<li class="song" data-search="heaven bryan adams">Heaven</li>
+<li class="song" data-search="summer of &#x27;69 bryan adams">Summer Of &#x27;69</li>
+</ul></section>
+<section class="artist-group" data-search="cage the elephant">
+<h2 class="artist-name">Cage The Elephant</h2>
+<ul class="song-list">
+<li class="song" data-search="cigarette daydreams cage the elephant">Cigarette Daydreams</li>
+</ul></section>
+<section class="artist-group" data-search="calvin harris, frank ocean">
+<h2 class="artist-name">Calvin Harris, Frank Ocean</h2>
+<ul class="song-list">
+<li class="song" data-search="slide (feat. frank ocean &amp; migos) calvin harris, frank ocean">Slide (feat. Frank Ocean &amp; Migos)</li>
+</ul></section>
+<section class="artist-group" data-search="ceelo green">
+<h2 class="artist-name">CeeLo Green</h2>
+<ul class="song-list">
+<li class="song" data-search="forget you ceelo green">Forget You</li>
+</ul></section>
+<section class="artist-group" data-search="chappell roan">
+<h2 class="artist-name">Chappell Roan</h2>
+<ul class="song-list">
+<li class="song" data-search="good luck, babe! chappell roan">Good Luck, Babe!</li>
+</ul></section>
+<section class="artist-group" data-search="chris isaak">
+<h2 class="artist-name">Chris Isaak</h2>
+<ul class="song-list">
+<li class="song" data-search="wicked game chris isaak">Wicked Game</li>
+</ul></section>
+<section class="artist-group" data-search="chris stapleton">
+<h2 class="artist-name">Chris Stapleton</h2>
+<ul class="song-list">
+<li class="song" data-search="starting over chris stapleton">Starting Over</li>
+<li class="song" data-search="tennessee whiskey chris stapleton">Tennessee Whiskey</li>
+<li class="song" data-search="you should probably leave chris stapleton">You Should Probably Leave</li>
+</ul></section>
+<section class="artist-group" data-search="chumbawamba">
+<h2 class="artist-name">Chumbawamba</h2>
+<ul class="song-list">
+<li class="song" data-search="tubthumping chumbawamba">Tubthumping</li>
+</ul></section>
+<section class="artist-group" data-search="cody johnson">
+<h2 class="artist-name">Cody Johnson</h2>
+<ul class="song-list">
+<li class="song" data-search="&#x27;til you can&#x27;t cody johnson">&#x27;Til You Can&#x27;t</li>
+</ul></section>
+<section class="artist-group" data-search="coldplay">
+<h2 class="artist-name">Coldplay</h2>
+<ul class="song-list">
+<li class="song" data-search="the scientist coldplay">The Scientist</li>
+<li class="song" data-search="viva la vida coldplay">Viva La Vida</li>
+<li class="song" data-search="yellow coldplay">Yellow</li>
+</ul></section>
+<section class="artist-group" data-search="colter wall">
+<h2 class="artist-name">Colter Wall</h2>
+<ul class="song-list">
+<li class="song" data-search="thirteen silver dollars colter wall">Thirteen Silver Dollars</li>
+</ul></section>
+<section class="artist-group" data-search="counting crows">
+<h2 class="artist-name">Counting Crows</h2>
+<ul class="song-list">
+<li class="song" data-search="accidentally in love counting crows">Accidentally In Love</li>
+<li class="song" data-search="big yellow taxi counting crows">Big Yellow Taxi</li>
+</ul></section>
+<section class="artist-group" data-search="creedence clearwater revival">
+<h2 class="artist-name">Creedence Clearwater Revival</h2>
+<ul class="song-list">
+<li class="song" data-search="bad moon rising creedence clearwater revival">Bad Moon Rising</li>
+<li class="song" data-search="have you ever seen the rain creedence clearwater revival">Have You Ever Seen The Rain</li>
+<li class="song" data-search="lodi creedence clearwater revival">Lodi</li>
+<li class="song" data-search="lookin&#x27; out my back door creedence clearwater revival">Lookin&#x27; Out My Back Door</li>
+</ul></section>
+<section class="artist-group" data-search="crowded house">
+<h2 class="artist-name">Crowded House</h2>
+<ul class="song-list">
+<li class="song" data-search="don&#x27;t dream it&#x27;s over crowded house">Don&#x27;t Dream It&#x27;s Over</li>
+</ul></section>
+<section class="artist-group" data-search="cyndi lauper">
+<h2 class="artist-name">Cyndi Lauper</h2>
+<ul class="song-list">
+<li class="song" data-search="time after time cyndi lauper">Time After Time</li>
+</ul></section>
+<section class="artist-group" data-search="dan fogelberg">
+<h2 class="artist-name">Dan Fogelberg</h2>
+<ul class="song-list">
+<li class="song" data-search="same old lang syne dan fogelberg">Same Old Lang Syne</li>
+</ul></section>
+<section class="artist-group" data-search="darius rucker">
+<h2 class="artist-name">Darius Rucker</h2>
+<ul class="song-list">
+<li class="song" data-search="alright darius rucker">Alright</li>
+<li class="song" data-search="wagon wheel darius rucker">Wagon Wheel</li>
+</ul></section>
+<section class="artist-group" data-search="daryl hall &amp; john oates">
+<h2 class="artist-name">Daryl Hall &amp; John Oates</h2>
+<ul class="song-list">
+<li class="song" data-search="rich girl daryl hall &amp; john oates">Rich Girl</li>
+</ul></section>
+<section class="artist-group" data-search="dave matthews band">
+<h2 class="artist-name">Dave Matthews Band</h2>
+<ul class="song-list">
+<li class="song" data-search="crash into me dave matthews band">Crash into Me</li>
+</ul></section>
+<section class="artist-group" data-search="david lee murphy">
+<h2 class="artist-name">David Lee Murphy</h2>
+<ul class="song-list">
+<li class="song" data-search="dust on the bottle david lee murphy">Dust On The Bottle</li>
+</ul></section>
+<section class="artist-group" data-search="death cab for cutie">
+<h2 class="artist-name">Death Cab for Cutie</h2>
+<ul class="song-list">
+<li class="song" data-search="i will follow you into the dark death cab for cutie">I Will Follow You into the Dark</li>
+</ul></section>
+<section class="artist-group" data-search="del amitri">
+<h2 class="artist-name">Del Amitri</h2>
+<ul class="song-list">
+<li class="song" data-search="roll to me del amitri">Roll To Me</li>
+</ul></section>
+<section class="artist-group" data-search="djo">
+<h2 class="artist-name">Djo</h2>
+<ul class="song-list">
+<li class="song" data-search="end of beginning djo">End of Beginning</li>
+</ul></section>
+<section class="artist-group" data-search="dobie gray">
+<h2 class="artist-name">Dobie Gray</h2>
+<ul class="song-list">
+<li class="song" data-search="drift away dobie gray">Drift Away</li>
+</ul></section>
+<section class="artist-group" data-search="dolly parton">
+<h2 class="artist-name">Dolly Parton</h2>
+<ul class="song-list">
+<li class="song" data-search="9 to 5 dolly parton">9 to 5</li>
+</ul></section>
+<section class="artist-group" data-search="dolly parton, kenny rogers">
+<h2 class="artist-name">Dolly Parton, Kenny Rogers</h2>
+<ul class="song-list">
+<li class="song" data-search="islands in the stream dolly parton, kenny rogers">Islands In the Stream</li>
+</ul></section>
+<section class="artist-group" data-search="dominic fike">
+<h2 class="artist-name">Dominic Fike</h2>
+<ul class="song-list">
+<li class="song" data-search="3 nights dominic fike">3 Nights</li>
+<li class="song" data-search="babydoll dominic fike">Babydoll</li>
+</ul></section>
+<section class="artist-group" data-search="don henley">
+<h2 class="artist-name">Don Henley</h2>
+<ul class="song-list">
+<li class="song" data-search="the boys of summer don henley">The Boys Of Summer</li>
+</ul></section>
+<section class="artist-group" data-search="drake;majid jordan">
+<h2 class="artist-name">Drake;Majid Jordan</h2>
+<ul class="song-list">
+<li class="song" data-search="hold on, we&#x27;re going home drake;majid jordan">Hold On, We&#x27;re Going Home</li>
+</ul></section>
+<section class="artist-group" data-search="eagles">
+<h2 class="artist-name">Eagles</h2>
+<ul class="song-list">
+<li class="song" data-search="peaceful easy feeling eagles">Peaceful Easy Feeling</li>
+<li class="song" data-search="take it easy eagles">Take It Easy</li>
+<li class="song" data-search="tequila sunrise eagles">Tequila Sunrise</li>
+</ul></section>
+<section class="artist-group" data-search="ed sheeran">
+<h2 class="artist-name">Ed Sheeran</h2>
+<ul class="song-list">
+<li class="song" data-search="shape of you ed sheeran">Shape of You</li>
+<li class="song" data-search="thinking out loud ed sheeran">Thinking out Loud</li>
+</ul></section>
+<section class="artist-group" data-search="ed sheeran &amp; justin bieber">
+<h2 class="artist-name">Ed Sheeran &amp; Justin Bieber</h2>
+<ul class="song-list">
+<li class="song" data-search="i don&#x27;t care (with justin bieber) ed sheeran &amp; justin bieber">I Don&#x27;t Care (with Justin Bieber)</li>
+</ul></section>
+<section class="artist-group" data-search="edison lighthouse">
+<h2 class="artist-name">Edison Lighthouse</h2>
+<ul class="song-list">
+<li class="song" data-search="love grows (where my rosemary goes) edison lighthouse">Love Grows (Where My Rosemary Goes)</li>
+</ul></section>
+<section class="artist-group" data-search="ella langley">
+<h2 class="artist-name">Ella Langley</h2>
+<ul class="song-list">
+<li class="song" data-search="choosin&#x27; texas ella langley">Choosin&#x27; Texas</li>
+</ul></section>
+<section class="artist-group" data-search="elton john">
+<h2 class="artist-name">Elton John</h2>
+<ul class="song-list">
+<li class="song" data-search="rocket man (i think it&#x27;s going to be a long, long time) elton john">Rocket Man (I Think It&#x27;s Going To Be A Long, Long Time)</li>
+</ul></section>
+<section class="artist-group" data-search="elvis presley">
+<h2 class="artist-name">Elvis Presley</h2>
+<ul class="song-list">
+<li class="song" data-search="can&#x27;t help falling in love elvis presley">Can&#x27;t Help Falling in Love</li>
+</ul></section>
+<section class="artist-group" data-search="eric church">
+<h2 class="artist-name">Eric Church</h2>
+<ul class="song-list">
+<li class="song" data-search="drink in my hand eric church">Drink In My Hand</li>
+</ul></section>
+<section class="artist-group" data-search="eric clapton">
+<h2 class="artist-name">Eric Clapton</h2>
+<ul class="song-list">
+<li class="song" data-search="change the world eric clapton">Change the World</li>
+<li class="song" data-search="lay down sally eric clapton">Lay Down Sally</li>
+</ul></section>
+<section class="artist-group" data-search="faces">
+<h2 class="artist-name">Faces</h2>
+<ul class="song-list">
+<li class="song" data-search="ooh la la faces">Ooh La La</li>
+</ul></section>
+<section class="artist-group" data-search="fleetwood mac">
+<h2 class="artist-name">Fleetwood Mac</h2>
+<ul class="song-list">
+<li class="song" data-search="landslide fleetwood mac">Landslide</li>
+</ul></section>
+<section class="artist-group" data-search="frankie valli">
+<h2 class="artist-name">Frankie Valli</h2>
+<ul class="song-list">
+<li class="song" data-search="can&#x27;t take my eyes o you frankie valli">Can&#x27;t Take My Eyes o You</li>
+</ul></section>
+<section class="artist-group" data-search="garth brooks tribute">
+<h2 class="artist-name">Garth Brooks Tribute</h2>
+<ul class="song-list">
+<li class="song" data-search="friends in low places garth brooks tribute">Friends in Low Places</li>
+</ul></section>
+<section class="artist-group" data-search="gavin degraw">
+<h2 class="artist-name">Gavin DeGraw</h2>
+<ul class="song-list">
+<li class="song" data-search="chariot gavin degraw">Chariot</li>
+<li class="song" data-search="i don&#x27;t want to be gavin degraw">I Don&#x27;t Want to Be</li>
+</ul></section>
+<section class="artist-group" data-search="george ezra">
+<h2 class="artist-name">George Ezra</h2>
+<ul class="song-list">
+<li class="song" data-search="budapest george ezra">Budapest</li>
+</ul></section>
+<section class="artist-group" data-search="george strait">
+<h2 class="artist-name">George Strait</h2>
+<ul class="song-list">
+<li class="song" data-search="all my ex&#x27;s live in texas george strait">All My Ex&#x27;s Live In Texas</li>
+<li class="song" data-search="amarillo by morning george strait">Amarillo By Morning</li>
+<li class="song" data-search="here for a good time george strait">Here For A Good Time</li>
+<li class="song" data-search="i just want to dance with you george strait">I Just Want To Dance With You</li>
+<li class="song" data-search="write this down george strait">Write This Down</li>
+</ul></section>
+<section class="artist-group" data-search="green day">
+<h2 class="artist-name">Green Day</h2>
+<ul class="song-list">
+<li class="song" data-search="good riddance (time of your life) green day">Good Riddance (Time of Your Life)</li>
+</ul></section>
+<section class="artist-group" data-search="guns n&#x27; roses">
+<h2 class="artist-name">Guns N&#x27; Roses</h2>
+<ul class="song-list">
+<li class="song" data-search="sweet child o&#x27; mine guns n&#x27; roses">Sweet Child O&#x27; Mine</li>
+</ul></section>
+<section class="artist-group" data-search="hank williams, jr.">
+<h2 class="artist-name">Hank Williams, Jr.</h2>
+<ul class="song-list">
+<li class="song" data-search="family tradition hank williams, jr.">Family Tradition</li>
+</ul></section>
+<section class="artist-group" data-search="harry styles">
+<h2 class="artist-name">Harry Styles</h2>
+<ul class="song-list">
+<li class="song" data-search="as it was harry styles">As It Was</li>
+</ul></section>
+<section class="artist-group" data-search="hayes carll">
+<h2 class="artist-name">Hayes Carll</h2>
+<ul class="song-list">
+<li class="song" data-search="bad liver and a broken heart hayes carll">Bad Liver And A Broken Heart</li>
+<li class="song" data-search="drunken poet&#x27;s dream hayes carll">Drunken Poet&#x27;s Dream</li>
+</ul></section>
+<section class="artist-group" data-search="howie day">
+<h2 class="artist-name">Howie Day</h2>
+<ul class="song-list">
+<li class="song" data-search="collide howie day">Collide</li>
+</ul></section>
+<section class="artist-group" data-search="hudson westbrook">
+<h2 class="artist-name">Hudson Westbrook</h2>
+<ul class="song-list">
+<li class="song" data-search="painted you pretty hudson westbrook">Painted You Pretty</li>
+</ul></section>
+<section class="artist-group" data-search="jack johnson">
+<h2 class="artist-name">Jack Johnson</h2>
+<ul class="song-list">
+<li class="song" data-search="banana pancakes jack johnson">Banana Pancakes</li>
+<li class="song" data-search="better together jack johnson">Better Together</li>
+<li class="song" data-search="bubble toes jack johnson">Bubble Toes</li>
+<li class="song" data-search="flake jack johnson">Flake</li>
+<li class="song" data-search="sitting, waiting, wishing jack johnson">Sitting, Waiting, Wishing</li>
+<li class="song" data-search="taylor jack johnson">Taylor</li>
+<li class="song" data-search="upside down jack johnson">Upside Down</li>
+</ul></section>
+<section class="artist-group" data-search="jackson browne">
+<h2 class="artist-name">Jackson Browne</h2>
+<ul class="song-list">
+<li class="song" data-search="doctor my eyes jackson browne">Doctor My Eyes</li>
+</ul></section>
+<section class="artist-group" data-search="jake bugg">
+<h2 class="artist-name">Jake Bugg</h2>
+<ul class="song-list">
+<li class="song" data-search="two fingers jake bugg">Two Fingers</li>
+</ul></section>
+<section class="artist-group" data-search="james blunt">
+<h2 class="artist-name">James Blunt</h2>
+<ul class="song-list">
+<li class="song" data-search="you&#x27;re beautiful james blunt">You&#x27;re Beautiful</li>
+</ul></section>
+<section class="artist-group" data-search="james taylor">
+<h2 class="artist-name">James Taylor</h2>
+<ul class="song-list">
+<li class="song" data-search="carolina in my mind james taylor">Carolina in My Mind</li>
+<li class="song" data-search="fire and rain james taylor">Fire and Rain</li>
+<li class="song" data-search="sweet baby james james taylor">Sweet Baby James</li>
+<li class="song" data-search="you&#x27;ve got a friend james taylor">You&#x27;ve Got a Friend</li>
+</ul></section>
+<section class="artist-group" data-search="jason mraz">
+<h2 class="artist-name">Jason Mraz</h2>
+<ul class="song-list">
+<li class="song" data-search="i&#x27;m yours jason mraz">I&#x27;m Yours</li>
+<li class="song" data-search="you and i both jason mraz">You and I Both</li>
+</ul></section>
+<section class="artist-group" data-search="jerrod niemann">
+<h2 class="artist-name">Jerrod Niemann</h2>
+<ul class="song-list">
+<li class="song" data-search="lover, lover jerrod niemann">Lover, Lover</li>
+</ul></section>
+<section class="artist-group" data-search="jesse mccartney">
+<h2 class="artist-name">Jesse McCartney</h2>
+<ul class="song-list">
+<li class="song" data-search="beautiful soul jesse mccartney">Beautiful Soul</li>
+</ul></section>
+<section class="artist-group" data-search="jim croce">
+<h2 class="artist-name">Jim Croce</h2>
+<ul class="song-list">
+<li class="song" data-search="bad, bad leroy brown jim croce">Bad, Bad Leroy Brown</li>
+</ul></section>
+<section class="artist-group" data-search="jimmy bu ett">
+<h2 class="artist-name">Jimmy Bu ett</h2>
+<ul class="song-list">
+<li class="song" data-search="margaritaville jimmy bu ett">Margaritaville</li>
+</ul></section>
+<section class="artist-group" data-search="joe nichols">
+<h2 class="artist-name">Joe Nichols</h2>
+<ul class="song-list">
+<li class="song" data-search="tequila makes her clothes fall o joe nichols">Tequila Makes Her Clothes Fall O</li>
+</ul></section>
+<section class="artist-group" data-search="john denver">
+<h2 class="artist-name">John Denver</h2>
+<ul class="song-list">
+<li class="song" data-search="take me home, country roads john denver">Take Me Home, Country Roads</li>
+</ul></section>
+<section class="artist-group" data-search="john legend">
+<h2 class="artist-name">John Legend</h2>
+<ul class="song-list">
+<li class="song" data-search="all of me john legend">All of Me</li>
+</ul></section>
+<section class="artist-group" data-search="john mayer">
+<h2 class="artist-name">John Mayer</h2>
+<ul class="song-list">
+<li class="song" data-search="daughters john mayer">Daughters</li>
+<li class="song" data-search="i don&#x27;t trust myself (with loving you) john mayer">I Don&#x27;t Trust Myself (With Loving You)</li>
+<li class="song" data-search="new light john mayer">New Light</li>
+<li class="song" data-search="no such thing john mayer">No Such Thing</li>
+<li class="song" data-search="say john mayer">Say</li>
+<li class="song" data-search="slow dancing in a burning room john mayer">Slow Dancing in a Burning Room</li>
+<li class="song" data-search="something like olivia john mayer">Something Like Olivia</li>
+<li class="song" data-search="waiting on the world to change john mayer">Waiting On the World to Change</li>
+<li class="song" data-search="who says john mayer">Who Says</li>
+<li class="song" data-search="why georgia john mayer">Why Georgia</li>
+<li class="song" data-search="your body is a wonderland john mayer">Your Body Is a Wonderland</li>
+</ul></section>
+<section class="artist-group" data-search="johnny cash">
+<h2 class="artist-name">Johnny Cash</h2>
+<ul class="song-list">
+<li class="song" data-search="folsom prison blues johnny cash">Folsom Prison Blues</li>
+<li class="song" data-search="jackson johnny cash">Jackson</li>
+<li class="song" data-search="ring of fire johnny cash">Ring of Fire</li>
+</ul></section>
+<section class="artist-group" data-search="josh turner">
+<h2 class="artist-name">Josh Turner</h2>
+<ul class="song-list">
+<li class="song" data-search="why don&#x27;t we just dance josh turner">Why Don&#x27;t We Just Dance</li>
+<li class="song" data-search="your man josh turner">Your Man</li>
+</ul></section>
+<section class="artist-group" data-search="journey">
+<h2 class="artist-name">Journey</h2>
+<ul class="song-list">
+<li class="song" data-search="don&#x27;t stop believin&#x27; journey">Don&#x27;t Stop Believin&#x27;</li>
+</ul></section>
+<section class="artist-group" data-search="justin bieber">
+<h2 class="artist-name">Justin Bieber</h2>
+<ul class="song-list">
+<li class="song" data-search="daisies justin bieber">Daisies</li>
+<li class="song" data-search="love yourself justin bieber">Love Yourself</li>
+</ul></section>
+<section class="artist-group" data-search="keane">
+<h2 class="artist-name">Keane</h2>
+<ul class="song-list">
+<li class="song" data-search="somewhere only we know keane">Somewhere Only We Know</li>
+</ul></section>
+<section class="artist-group" data-search="keith urban">
+<h2 class="artist-name">Keith Urban</h2>
+<ul class="song-list">
+<li class="song" data-search="you’ll think of me keith urban">You’ll Think Of Me</li>
+</ul></section>
+<section class="artist-group" data-search="keith whitley">
+<h2 class="artist-name">Keith Whitley</h2>
+<ul class="song-list">
+<li class="song" data-search="when you say nothing at all keith whitley">When You Say Nothing at All</li>
+</ul></section>
+<section class="artist-group" data-search="ken yates">
+<h2 class="artist-name">Ken Yates</h2>
+<ul class="song-list">
+<li class="song" data-search="my love for you is a straight line ken yates">My Love for You Is a Straight Line</li>
+</ul></section>
+<section class="artist-group" data-search="kenny rogers">
+<h2 class="artist-name">Kenny Rogers</h2>
+<ul class="song-list">
+<li class="song" data-search="the gambler kenny rogers">The Gambler</li>
+</ul></section>
+<section class="artist-group" data-search="king harvest">
+<h2 class="artist-name">King Harvest</h2>
+<ul class="song-list">
+<li class="song" data-search="dancing in the moonlight king harvest">Dancing in the Moonlight</li>
+</ul></section>
+<section class="artist-group" data-search="kris kristo erson">
+<h2 class="artist-name">Kris Kristo erson</h2>
+<ul class="song-list">
+<li class="song" data-search="sunday mornin&#x27; comin&#x27; down kris kristo erson">Sunday Mornin&#x27; Comin&#x27; Down</li>
+</ul></section>
+<section class="artist-group" data-search="lady gaga">
+<h2 class="artist-name">Lady Gaga</h2>
+<ul class="song-list">
+<li class="song" data-search="always remember us this way lady gaga">Always Remember Us This Way</li>
+</ul></section>
+<section class="artist-group" data-search="lauv">
+<h2 class="artist-name">Lauv</h2>
+<ul class="song-list">
+<li class="song" data-search="i like me better lauv">I Like Me Better</li>
+</ul></section>
+<section class="artist-group" data-search="leona lewis">
+<h2 class="artist-name">Leona Lewis</h2>
+<ul class="song-list">
+<li class="song" data-search="bleeding love leona lewis">Bleeding Love</li>
+</ul></section>
+<section class="artist-group" data-search="lifehouse">
+<h2 class="artist-name">Lifehouse</h2>
+<ul class="song-list">
+<li class="song" data-search="you and me lifehouse">You And Me</li>
+</ul></section>
+<section class="artist-group" data-search="loggins &amp; messina">
+<h2 class="artist-name">Loggins &amp; Messina</h2>
+<ul class="song-list">
+<li class="song" data-search="danny&#x27;s song loggins &amp; messina">Danny&#x27;s Song</li>
+</ul></section>
+<section class="artist-group" data-search="lyle lovett">
+<h2 class="artist-name">Lyle Lovett</h2>
+<ul class="song-list">
+<li class="song" data-search="if i had a boat lyle lovett">If I Had A Boat</li>
+</ul></section>
+<section class="artist-group" data-search="lynyrd skynyrd">
+<h2 class="artist-name">Lynyrd Skynyrd</h2>
+<ul class="song-list">
+<li class="song" data-search="sweet home alabama lynyrd skynyrd">Sweet Home Alabama</li>
+</ul></section>
+<section class="artist-group" data-search="magic!">
+<h2 class="artist-name">MAGIC!</h2>
+<ul class="song-list">
+<li class="song" data-search="rude magic!">Rude</li>
+</ul></section>
+<section class="artist-group" data-search="maroon 5">
+<h2 class="artist-name">Maroon 5</h2>
+<ul class="song-list">
+<li class="song" data-search="memories maroon 5">Memories</li>
+<li class="song" data-search="she will be loved maroon 5">She Will Be Loved</li>
+<li class="song" data-search="this love maroon 5">This Love</li>
+<li class="song" data-search="won&#x27;t go home without you maroon 5">Won&#x27;t Go Home Without You</li>
+</ul></section>
+<section class="artist-group" data-search="matchbox twenty">
+<h2 class="artist-name">Matchbox Twenty</h2>
+<ul class="song-list">
+<li class="song" data-search="3am matchbox twenty">3AM</li>
+<li class="song" data-search="bright lights matchbox twenty">Bright Lights</li>
+<li class="song" data-search="unwell matchbox twenty">Unwell</li>
+</ul></section>
+<section class="artist-group" data-search="matt nathanson">
+<h2 class="artist-name">Matt Nathanson</h2>
+<ul class="song-list">
+<li class="song" data-search="come on get higher matt nathanson">Come On Get Higher</li>
+</ul></section>
+<section class="artist-group" data-search="merle haggard &amp; the strangers">
+<h2 class="artist-name">Merle Haggard &amp; The Strangers</h2>
+<ul class="song-list">
+<li class="song" data-search="mama tried merle haggard &amp; the strangers">Mama Tried</li>
+</ul></section>
+<section class="artist-group" data-search="michael bublé">
+<h2 class="artist-name">Michael Bublé</h2>
+<ul class="song-list">
+<li class="song" data-search="everything michael bublé">Everything</li>
+</ul></section>
+<section class="artist-group" data-search="michael jackson">
+<h2 class="artist-name">Michael Jackson</h2>
+<ul class="song-list">
+<li class="song" data-search="billie jean michael jackson">Billie Jean</li>
+</ul></section>
+<section class="artist-group" data-search="midland">
+<h2 class="artist-name">Midland</h2>
+<ul class="song-list">
+<li class="song" data-search="burn out midland">Burn Out</li>
+<li class="song" data-search="cheatin’ songs midland">Cheatin’ Songs</li>
+<li class="song" data-search="drinkin&#x27; problem midland">Drinkin&#x27; Problem</li>
+</ul></section>
+<section class="artist-group" data-search="miley cyrus">
+<h2 class="artist-name">Miley Cyrus</h2>
+<ul class="song-list">
+<li class="song" data-search="flowers miley cyrus">Flowers</li>
+<li class="song" data-search="the climb miley cyrus">The Climb</li>
+</ul></section>
+<section class="artist-group" data-search="mkto">
+<h2 class="artist-name">MKTO</h2>
+<ul class="song-list">
+<li class="song" data-search="classic mkto">Classic</li>
+</ul></section>
+<section class="artist-group" data-search="modern english">
+<h2 class="artist-name">Modern English</h2>
+<ul class="song-list">
+<li class="song" data-search="i melt with you modern english">I Melt with You</li>
+</ul></section>
+<section class="artist-group" data-search="morgan wallen">
+<h2 class="artist-name">Morgan Wallen</h2>
+<ul class="song-list">
+<li class="song" data-search="love somebody morgan wallen">Love Somebody</li>
+<li class="song" data-search="money on me morgan wallen">Money On Me</li>
+<li class="song" data-search="one thing at a time morgan wallen">One Thing At A Time</li>
+<li class="song" data-search="whiskey glasses morgan wallen">Whiskey Glasses</li>
+</ul></section>
+<section class="artist-group" data-search="natalie imbruglia">
+<h2 class="artist-name">Natalie Imbruglia</h2>
+<ul class="song-list">
+<li class="song" data-search="torn natalie imbruglia">Torn</li>
+</ul></section>
+<section class="artist-group" data-search="neil diamond">
+<h2 class="artist-name">Neil Diamond</h2>
+<ul class="song-list">
+<li class="song" data-search="sweet caroline neil diamond">Sweet Caroline</li>
+</ul></section>
+<section class="artist-group" data-search="neil young">
+<h2 class="artist-name">Neil Young</h2>
+<ul class="song-list">
+<li class="song" data-search="harvest moon neil young">Harvest Moon</li>
+</ul></section>
+<section class="artist-group" data-search="niall horan">
+<h2 class="artist-name">Niall Horan</h2>
+<ul class="song-list">
+<li class="song" data-search="slow hands niall horan">Slow Hands</li>
+</ul></section>
+<section class="artist-group" data-search="nine days">
+<h2 class="artist-name">Nine Days</h2>
+<ul class="song-list">
+<li class="song" data-search="absolutely (story of a girl) nine days">Absolutely (Story of a Girl)</li>
+</ul></section>
+<section class="artist-group" data-search="noah kahan">
+<h2 class="artist-name">Noah Kahan</h2>
+<ul class="song-list">
+<li class="song" data-search="stick season noah kahan">Stick Season</li>
+<li class="song" data-search="you’re gonna go far noah kahan">You’re Gonna Go Far</li>
+</ul></section>
+<section class="artist-group" data-search="norah jones">
+<h2 class="artist-name">Norah Jones</h2>
+<ul class="song-list">
+<li class="song" data-search="don&#x27;t know why norah jones">Don&#x27;t Know Why</li>
+</ul></section>
+<section class="artist-group" data-search="oasis">
+<h2 class="artist-name">Oasis</h2>
+<ul class="song-list">
+<li class="song" data-search="champagne supernova oasis">Champagne Supernova</li>
+<li class="song" data-search="wonderwall oasis">Wonderwall</li>
+</ul></section>
+<section class="artist-group" data-search="old dominion">
+<h2 class="artist-name">Old Dominion</h2>
+<ul class="song-list">
+<li class="song" data-search="break up with him old dominion">Break Up with Him</li>
+</ul></section>
+<section class="artist-group" data-search="one direction">
+<h2 class="artist-name">One Direction</h2>
+<ul class="song-list">
+<li class="song" data-search="night changes one direction">Night Changes</li>
+</ul></section>
+<section class="artist-group" data-search="onerepublic">
+<h2 class="artist-name">OneRepublic</h2>
+<ul class="song-list">
+<li class="song" data-search="counting stars onerepublic">Counting Stars</li>
+</ul></section>
+<section class="artist-group" data-search="otis redding">
+<h2 class="artist-name">Otis Redding</h2>
+<ul class="song-list">
+<li class="song" data-search="(sittin&#x27; on) the dock of the bay otis redding">(Sittin&#x27; On) the Dock of the Bay</li>
+</ul></section>
+<section class="artist-group" data-search="paramore">
+<h2 class="artist-name">Paramore</h2>
+<ul class="song-list">
+<li class="song" data-search="the only exception paramore">The Only Exception</li>
+</ul></section>
+<section class="artist-group" data-search="pat green">
+<h2 class="artist-name">Pat Green</h2>
+<ul class="song-list">
+<li class="song" data-search="wave on wave pat green">Wave on Wave</li>
+</ul></section>
+<section class="artist-group" data-search="paul simon">
+<h2 class="artist-name">Paul Simon</h2>
+<ul class="song-list">
+<li class="song" data-search="you can call me al paul simon">You Can Call Me Al</li>
+</ul></section>
+<section class="artist-group" data-search="pearl jam">
+<h2 class="artist-name">Pearl Jam</h2>
+<ul class="song-list">
+<li class="song" data-search="last kiss pearl jam">Last Kiss</li>
+</ul></section>
+<section class="artist-group" data-search="phil collins">
+<h2 class="artist-name">Phil Collins</h2>
+<ul class="song-list">
+<li class="song" data-search="against all odds (take a look at me now) phil collins">Against All Odds (Take a Look at Me Now)</li>
+</ul></section>
+<section class="artist-group" data-search="plain white t&#x27;s">
+<h2 class="artist-name">Plain White T&#x27;s</h2>
+<ul class="song-list">
+<li class="song" data-search="hey there delilah plain white t&#x27;s">Hey There Delilah</li>
+</ul></section>
+<section class="artist-group" data-search="post malone">
+<h2 class="artist-name">Post Malone</h2>
+<ul class="song-list">
+<li class="song" data-search="i had some help (feat. morgan wallen) post malone">I Had Some Help (Feat. Morgan Wallen)</li>
+</ul></section>
+<section class="artist-group" data-search="post malone, swae lee">
+<h2 class="artist-name">Post Malone, Swae Lee</h2>
+<ul class="song-list">
+<li class="song" data-search="sun ower post malone, swae lee">Sun ower</li>
+</ul></section>
+<section class="artist-group" data-search="radiohead">
+<h2 class="artist-name">Radiohead</h2>
+<ul class="song-list">
+<li class="song" data-search="creep radiohead">Creep</li>
+<li class="song" data-search="fake plastic trees radiohead">Fake Plastic Trees</li>
+<li class="song" data-search="high and dry radiohead">High and Dry</li>
+</ul></section>
+<section class="artist-group" data-search="randy rogers band">
+<h2 class="artist-name">Randy Rogers Band</h2>
+<ul class="song-list">
+<li class="song" data-search="kiss me in the dark randy rogers band">Kiss Me In The Dark</li>
+</ul></section>
+<section class="artist-group" data-search="randy travis">
+<h2 class="artist-name">Randy Travis</h2>
+<ul class="song-list">
+<li class="song" data-search="forever and ever, amen randy travis">Forever and Ever, Amen</li>
+</ul></section>
+<section class="artist-group" data-search="rascal flatts">
+<h2 class="artist-name">Rascal Flatts</h2>
+<ul class="song-list">
+<li class="song" data-search="bless the broken road rascal flatts">Bless The Broken Road</li>
+<li class="song" data-search="these days rascal flatts">These Days</li>
+</ul></section>
+<section class="artist-group" data-search="riley green">
+<h2 class="artist-name">Riley Green</h2>
+<ul class="song-list">
+<li class="song" data-search="worst way riley green">Worst Way</li>
+</ul></section>
+<section class="artist-group" data-search="robert earl keen">
+<h2 class="artist-name">Robert Earl Keen</h2>
+<ul class="song-list">
+<li class="song" data-search="the road goes on forever robert earl keen">The Road Goes On Forever</li>
+</ul></section>
+<section class="artist-group" data-search="role model">
+<h2 class="artist-name">ROLE MODEL</h2>
+<ul class="song-list">
+<li class="song" data-search="sally, when the wine runs out role model">Sally, When The Wine Runs Out</li>
+</ul></section>
+<section class="artist-group" data-search="sam cooke">
+<h2 class="artist-name">Sam Cooke</h2>
+<ul class="song-list">
+<li class="song" data-search="(what a) wonderful world sam cooke">(What A) Wonderful World</li>
+</ul></section>
+<section class="artist-group" data-search="shania twain">
+<h2 class="artist-name">Shania Twain</h2>
+<ul class="song-list">
+<li class="song" data-search="you&#x27;re still the one shania twain">You&#x27;re Still The One</li>
+</ul></section>
+<section class="artist-group" data-search="shawn mendes">
+<h2 class="artist-name">Shawn Mendes</h2>
+<ul class="song-list">
+<li class="song" data-search="there&#x27;s nothing holdin&#x27; me back shawn mendes">There&#x27;s Nothing Holdin&#x27; Me Back</li>
+</ul></section>
+<section class="artist-group" data-search="shenandoah">
+<h2 class="artist-name">Shenandoah</h2>
+<ul class="song-list">
+<li class="song" data-search="two dozen roses shenandoah">Two Dozen Roses</li>
+</ul></section>
+<section class="artist-group" data-search="sister hazel">
+<h2 class="artist-name">Sister Hazel</h2>
+<ul class="song-list">
+<li class="song" data-search="all for you sister hazel">All For You</li>
+</ul></section>
+<section class="artist-group" data-search="smash mouth">
+<h2 class="artist-name">Smash Mouth</h2>
+<ul class="song-list">
+<li class="song" data-search="all star smash mouth">All Star</li>
+</ul></section>
+<section class="artist-group" data-search="steve miller band">
+<h2 class="artist-name">Steve Miller Band</h2>
+<ul class="song-list">
+<li class="song" data-search="the joker steve miller band">The Joker</li>
+</ul></section>
+<section class="artist-group" data-search="sublime">
+<h2 class="artist-name">Sublime</h2>
+<ul class="song-list">
+<li class="song" data-search="santeria sublime">Santeria</li>
+</ul></section>
+<section class="artist-group" data-search="taylor swift">
+<h2 class="artist-name">Taylor Swift</h2>
+<ul class="song-list">
+<li class="song" data-search="i bet you think about me (feat. chris stapleton) taylor swift">I Bet You Think About Me (feat. Chris Stapleton)</li>
+<li class="song" data-search="our song taylor swift">Our Song</li>
+</ul></section>
+<section class="artist-group" data-search="the 1975">
+<h2 class="artist-name">The 1975</h2>
+<ul class="song-list">
+<li class="song" data-search="somebody else the 1975">Somebody Else</li>
+</ul></section>
+<section class="artist-group" data-search="the band">
+<h2 class="artist-name">The Band</h2>
+<ul class="song-list">
+<li class="song" data-search="atlantic city the band">Atlantic City</li>
+<li class="song" data-search="ophelia the band">Ophelia</li>
+<li class="song" data-search="the weight the band">The Weight</li>
+</ul></section>
+<section class="artist-group" data-search="the beatles">
+<h2 class="artist-name">The Beatles</h2>
+<ul class="song-list">
+<li class="song" data-search="all my loving the beatles">All My Loving</li>
+<li class="song" data-search="blackbird the beatles">Blackbird</li>
+<li class="song" data-search="i want to hold your hand the beatles">I Want To Hold Your Hand</li>
+<li class="song" data-search="something the beatles">Something</li>
+</ul></section>
+<section class="artist-group" data-search="the chicks">
+<h2 class="artist-name">The Chicks</h2>
+<ul class="song-list">
+<li class="song" data-search="there&#x27;s your trouble the chicks">There&#x27;s Your Trouble</li>
+</ul></section>
+<section class="artist-group" data-search="the clash">
+<h2 class="artist-name">The Clash</h2>
+<ul class="song-list">
+<li class="song" data-search="should i stay or should i go the clash">Should I Stay or Should I Go</li>
+</ul></section>
+<section class="artist-group" data-search="the cure">
+<h2 class="artist-name">The Cure</h2>
+<ul class="song-list">
+<li class="song" data-search="friday i&#x27;m in love the cure">Friday I&#x27;m in Love</li>
+<li class="song" data-search="just like heaven the cure">Just like Heaven</li>
+</ul></section>
+<section class="artist-group" data-search="the damn quails">
+<h2 class="artist-name">The Damn Quails</h2>
+<ul class="song-list">
+<li class="song" data-search="fool&#x27;s gold the damn quails">Fool&#x27;s Gold</li>
+</ul></section>
+<section class="artist-group" data-search="the foundations">
+<h2 class="artist-name">The Foundations</h2>
+<ul class="song-list">
+<li class="song" data-search="build me up buttercup the foundations">Build Me Up Buttercup</li>
+</ul></section>
+<section class="artist-group" data-search="the fray">
+<h2 class="artist-name">The Fray</h2>
+<ul class="song-list">
+<li class="song" data-search="how to save a life the fray">How to Save a Life</li>
+</ul></section>
+<section class="artist-group" data-search="the goo goo dolls">
+<h2 class="artist-name">The Goo Goo Dolls</h2>
+<ul class="song-list">
+<li class="song" data-search="iris the goo goo dolls">Iris</li>
+<li class="song" data-search="slide the goo goo dolls">Slide</li>
+</ul></section>
+<section class="artist-group" data-search="the killers">
+<h2 class="artist-name">The Killers</h2>
+<ul class="song-list">
+<li class="song" data-search="mr. brightside the killers">Mr. Brightside</li>
+</ul></section>
+<section class="artist-group" data-search="the lumineers">
+<h2 class="artist-name">The Lumineers</h2>
+<ul class="song-list">
+<li class="song" data-search="ho hey the lumineers">Ho Hey</li>
+</ul></section>
+<section class="artist-group" data-search="the out eld">
+<h2 class="artist-name">The Out eld</h2>
+<ul class="song-list">
+<li class="song" data-search="your love the out eld">Your Love</li>
+</ul></section>
+<section class="artist-group" data-search="the police">
+<h2 class="artist-name">The Police</h2>
+<ul class="song-list">
+<li class="song" data-search="every breath you take the police">Every Breath You Take</li>
+</ul></section>
+<section class="artist-group" data-search="the red clay strays">
+<h2 class="artist-name">The Red Clay Strays</h2>
+<ul class="song-list">
+<li class="song" data-search="wondering why the red clay strays">Wondering Why</li>
+</ul></section>
+<section class="artist-group" data-search="the script">
+<h2 class="artist-name">The Script</h2>
+<ul class="song-list">
+<li class="song" data-search="breakeven the script">Breakeven</li>
+<li class="song" data-search="the man who can&#x27;t be moved the script">The Man Who Can&#x27;t Be Moved</li>
+</ul></section>
+<section class="artist-group" data-search="the temptations">
+<h2 class="artist-name">The Temptations</h2>
+<ul class="song-list">
+<li class="song" data-search="my girl the temptations">My Girl</li>
+</ul></section>
+<section class="artist-group" data-search="third eye blind">
+<h2 class="artist-name">Third Eye Blind</h2>
+<ul class="song-list">
+<li class="song" data-search="jumper third eye blind">Jumper</li>
+</ul></section>
+<section class="artist-group" data-search="tim mcgraw">
+<h2 class="artist-name">Tim McGraw</h2>
+<ul class="song-list">
+<li class="song" data-search="something like that tim mcgraw">Something Like That</li>
+</ul></section>
+<section class="artist-group" data-search="tlc">
+<h2 class="artist-name">TLC</h2>
+<ul class="song-list">
+<li class="song" data-search="no scrubs tlc">No Scrubs</li>
+</ul></section>
+<section class="artist-group" data-search="tom petty">
+<h2 class="artist-name">Tom Petty</h2>
+<ul class="song-list">
+<li class="song" data-search="i won&#x27;t back down tom petty">I Won&#x27;t Back Down</li>
+<li class="song" data-search="wild owers tom petty">Wild owers</li>
+</ul></section>
+<section class="artist-group" data-search="tom petty and the heartbreakers">
+<h2 class="artist-name">Tom Petty and the Heartbreakers</h2>
+<ul class="song-list">
+<li class="song" data-search="breakdown tom petty and the heartbreakers">Breakdown</li>
+<li class="song" data-search="into the great wide open tom petty and the heartbreakers">Into The Great Wide Open</li>
+<li class="song" data-search="mary jane&#x27;s last dance tom petty and the heartbreakers">Mary Jane&#x27;s Last Dance</li>
+</ul></section>
+<section class="artist-group" data-search="train">
+<h2 class="artist-name">Train</h2>
+<ul class="song-list">
+<li class="song" data-search="drops of jupiter (tell me) train">Drops of Jupiter (Tell Me)</li>
+<li class="song" data-search="meet virginia train">Meet Virginia</li>
+</ul></section>
+<section class="artist-group" data-search="traveling wilburys">
+<h2 class="artist-name">Traveling Wilburys</h2>
+<ul class="song-list">
+<li class="song" data-search="handle with care traveling wilburys">Handle With Care</li>
+</ul></section>
+<section class="artist-group" data-search="travis tritt">
+<h2 class="artist-name">Travis Tritt</h2>
+<ul class="song-list">
+<li class="song" data-search="it&#x27;s a great day to be alive travis tritt">It&#x27;s A Great Day To Be Alive</li>
+</ul></section>
+<section class="artist-group" data-search="tyler childers">
+<h2 class="artist-name">Tyler Childers</h2>
+<ul class="song-list">
+<li class="song" data-search="all your&#x27;n tyler childers">All Your&#x27;n</li>
+<li class="song" data-search="feathered indians tyler childers">Feathered Indians</li>
+<li class="song" data-search="whitehouse road tyler childers">Whitehouse Road</li>
+</ul></section>
+<section class="artist-group" data-search="u2">
+<h2 class="artist-name">U2</h2>
+<ul class="song-list">
+<li class="song" data-search="i still haven&#x27;t found what i&#x27;m looking for u2">I Still Haven&#x27;t Found What I&#x27;m Looking For</li>
+</ul></section>
+<section class="artist-group" data-search="uncle kracker">
+<h2 class="artist-name">Uncle Kracker</h2>
+<ul class="song-list">
+<li class="song" data-search="follow me uncle kracker">Follow Me</li>
+</ul></section>
+<section class="artist-group" data-search="van morrison">
+<h2 class="artist-name">Van Morrison</h2>
+<ul class="song-list">
+<li class="song" data-search="brown eyed girl van morrison">Brown Eyed Girl</li>
+</ul></section>
+<section class="artist-group" data-search="vance joy">
+<h2 class="artist-name">Vance Joy</h2>
+<ul class="song-list">
+<li class="song" data-search="riptide vance joy">Riptide</li>
+</ul></section>
+<section class="artist-group" data-search="walk the moon">
+<h2 class="artist-name">WALK THE MOON</h2>
+<ul class="song-list">
+<li class="song" data-search="shut up and dance walk the moon">Shut Up and Dance</li>
+</ul></section>
+<section class="artist-group" data-search="waylon jennings, willie nelson">
+<h2 class="artist-name">Waylon Jennings, Willie Nelson</h2>
+<ul class="song-list">
+<li class="song" data-search="mammas don&#x27;t let your babies grow up to be cowboys waylon jennings, willie nelson">Mammas Don&#x27;t Let Your Babies Grow up to Be Cowboys</li>
+</ul></section>
+<section class="artist-group" data-search="weezer">
+<h2 class="artist-name">Weezer</h2>
+<ul class="song-list">
+<li class="song" data-search="island in the sun weezer">Island In The Sun</li>
+</ul></section>
+<section class="artist-group" data-search="wheatus">
+<h2 class="artist-name">Wheatus</h2>
+<ul class="song-list">
+<li class="song" data-search="teenage dirtbag wheatus">Teenage Dirtbag</li>
+</ul></section>
+<section class="artist-group" data-search="whitney houston">
+<h2 class="artist-name">Whitney Houston</h2>
+<ul class="song-list">
+<li class="song" data-search="i wanna dance with somebody (who loves me) whitney houston">I Wanna Dance with Somebody (Who Loves Me)</li>
+</ul></section>
+<section class="artist-group" data-search="willie nelson">
+<h2 class="artist-name">Willie Nelson</h2>
+<ul class="song-list">
+<li class="song" data-search="i gotta get drunk willie nelson">I Gotta Get Drunk</li>
+</ul></section>
+<section class="artist-group" data-search="yusuf / cat stevens">
+<h2 class="artist-name">Yusuf / Cat Stevens</h2>
+<ul class="song-list">
+<li class="song" data-search="another saturday night yusuf / cat stevens">Another Saturday Night</li>
+</ul></section>
+<section class="artist-group" data-search="zac brown band">
+<h2 class="artist-name">Zac Brown Band</h2>
+<ul class="song-list">
+<li class="song" data-search="chicken fried zac brown band">Chicken Fried</li>
+<li class="song" data-search="toes zac brown band">Toes</li>
+</ul></section>
+<section class="artist-group" data-search="zach top">
+<h2 class="artist-name">Zach Top</h2>
+<ul class="song-list">
+<li class="song" data-search="i never lie zach top">I Never Lie</li>
+</ul></section>
+</div><div class="empty" id="empty">No songs found. Try another search.</div></main>
+<script>
+(function(){
+ const input=document.getElementById('search');
+ const groups=Array.from(document.querySelectorAll('.artist-group'));
+ const count=document.getElementById('count');
+ const empty=document.getElementById('empty');
+ function render(){
+  const q=input.value.trim().toLocaleLowerCase();
+  let shown=0;
+  groups.forEach(group=>{
+   const artistMatch=group.dataset.search.includes(q);
+   const rows=Array.from(group.querySelectorAll('.song'));
+   let groupShown=0;
+   rows.forEach(song=>{
+    const match=!q || artistMatch || song.dataset.search.includes(q);
+    song.hidden=!match;
+    if(match){shown++;groupShown++;}
+   });
+   group.hidden=groupShown===0;
+  });
+  count.textContent=shown+' song'+(shown===1?'':'s');
+  empty.style.display=shown?'none':'block';
+ }
+ input.addEventListener('input',render);
+ document.getElementById('clear').addEventListener('click',()=>{input.value='';render();input.focus();});
+ render();
+})();
+</script>
+</body></html>
