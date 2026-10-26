@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101010">
+<title>Brad's Songbook</title>
+<style>
+:root{--bg:#101010;--panel:#1b1b1b;--line:#333;--muted:#aaa;--text:#f5f2ec;--accent:#d5b783}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{padding:28px 18px 18px;max-width:900px;margin:auto}
+.eyebrow{color:var(--accent);font-size:.75rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+h1{margin:6px 0 4px;font-size:clamp(2rem,7vw,3.1rem);line-height:1.05;letter-spacing:-.04em}
+.sub{margin:8px 0 20px;color:var(--muted)}
+.search-wrap{position:sticky;top:0;z-index:5;padding:10px 16px;background:#101010f2;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+.search-inner{max-width:900px;margin:auto;display:flex;gap:10px}
+input{min-width:0;flex:1;padding:14px 15px;border:1px solid #414141;border-radius:12px;background:#202020;color:var(--text);font:inherit;outline:none}
+input:focus{border-color:var(--accent);box-shadow:0 0 0 3px #d5b78322}
+button{border:1px solid #414141;border-radius:12px;padding:0 15px;background:#252525;color:var(--text);font:inherit;cursor:pointer}
+main{max-width:900px;margin:auto;padding:16px 16px 50px}
+.meta{display:flex;justify-content:space-between;gap:12px;margin:0 2px 12px;color:var(--muted);font-size:.88rem}
+.song{padding:13px 14px;margin:7px 0;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+.title{font-weight:700}.artist{color:var(--muted);font-size:.92rem;margin-top:2px}
+.letter{margin:24px 4px 8px;color:var(--accent);font-size:.78rem;font-weight:800;letter-spacing:.15em}
+.song[hidden],.letter[hidden]{display:none}
+.empty{display:none;text-align:center;padding:35px 10px;color:var(--muted)}
+@media(max-width:480px){header{padding-top:22px}.song{padding:12px}button{padding:0 12px}}
+</style>
+</head>
+<body>
+<header><div class="eyebrow">Live repertoire</div><h1>Brad's Songbook</h1><p class="sub">Search by song or artist. Artists are listed alphabetically.</p></header>
+<div class="search-wrap"><div class="search-inner"><input id="search" type="search" placeholder="Search songs or artists..." aria-label="Search songs or artists" autocomplete="off"><button id="clear" type="button">Clear</button></div></div>
+<main><div class="meta"><span id="count">273 songs</span><span>Artist A–Z</span></div><div id="list">
+<h2 class="letter" data-letter="4">4</h2>
+<article class="song" data-search="what&#x27;s up? 4 non blondes"><div class="title">What&#x27;s Up?</div><div class="artist">4 Non Blondes</div></article>
+<h2 class="letter" data-letter="A">A</h2>
+<article class="song" data-search="take on me a-ha"><div class="title">Take on Me</div><div class="artist">a-ha</div></article>
+<article class="song" data-search="you shook me all night long ac/dc"><div class="title">You Shook Me All Night Long</div><div class="artist">AC/DC</div></article>
+<article class="song" data-search="make you feel my love adele"><div class="title">Make You Feel My Love</div><div class="artist">Adele</div></article>
+<article class="song" data-search="i&#x27;m in a hurry (and don&#x27;t know why) alabama"><div class="title">I&#x27;m in a Hurry (And Don&#x27;t Know Why)</div><div class="artist">Alabama</div></article>
+<article class="song" data-search="it&#x27;s five o&#x27;clock somewhere alan jackson"><div class="title">It&#x27;s Five O&#x27;Clock Somewhere</div><div class="artist">Alan Jackson</div></article>
+<article class="song" data-search="wake me up - acoustic aloe blacc"><div class="title">Wake Me Up - Acoustic</div><div class="artist">Aloe Blacc</div></article>
+<article class="song" data-search="a horse with no name america"><div class="title">A Horse with No Name</div><div class="artist">America</div></article>
+<article class="song" data-search="complicated avril lavigne"><div class="title">Complicated</div><div class="artist">Avril Lavigne</div></article>
+<h2 class="letter" data-letter="B">B</h2>
+<article class="song" data-search="stand by me ben e. king"><div class="title">Stand By Me</div><div class="artist">Ben E. King</div></article>
+<article class="song" data-search="birds of a feather billie eilish"><div class="title">BIRDS OF A FEATHER</div><div class="artist">Billie Eilish</div></article>
+<article class="song" data-search="movin&#x27; out (anthony&#x27;s song) billy joel"><div class="title">Movin&#x27; Out (Anthony&#x27;s Song)</div><div class="artist">Billy Joel</div></article>
+<article class="song" data-search="my life billy joel"><div class="title">My Life</div><div class="artist">Billy Joel</div></article>
+<article class="song" data-search="some beach blake shelton"><div class="title">Some Beach</div><div class="artist">Blake Shelton</div></article>
+<article class="song" data-search="don&#x27;t think twice, it&#x27;s all right bob dylan"><div class="title">Don&#x27;t Think Twice, It&#x27;s All Right</div><div class="artist">Bob Dylan</div></article>
+<article class="song" data-search="is this love bob marley &amp; the wailers"><div class="title">Is This Love</div><div class="artist">Bob Marley &amp; The Wailers</div></article>
+<article class="song" data-search="old time rock &amp; roll bob seger"><div class="title">Old Time Rock &amp; Roll</div><div class="artist">Bob Seger</div></article>
+<article class="song" data-search="livin&#x27; on a prayer bon jovi"><div class="title">Livin&#x27; On A Prayer</div><div class="artist">Bon Jovi</div></article>
+<article class="song" data-search="boot scootin&#x27; boogie brooks &amp; dunn"><div class="title">Boot Scootin&#x27; Boogie</div><div class="artist">Brooks &amp; Dunn</div></article>
+<article class="song" data-search="neon moon brooks &amp; dunn"><div class="title">Neon Moon</div><div class="artist">Brooks &amp; Dunn</div></article>
+<article class="song" data-search="dancing in the dark bruce springsteen"><div class="title">Dancing In the Dark</div><div class="artist">Bruce Springsteen</div></article>
+<article class="song" data-search="i&#x27;m on fire bruce springsteen"><div class="title">I&#x27;m On Fire</div><div class="artist">Bruce Springsteen</div></article>
+<article class="song" data-search="just the way you are bruno mars"><div class="title">Just the Way You Are</div><div class="artist">Bruno Mars</div></article>
+<article class="song" data-search="marry you bruno mars"><div class="title">Marry You</div><div class="artist">Bruno Mars</div></article>
+<article class="song" data-search="when i was your man bruno mars"><div class="title">When I Was Your Man</div><div class="artist">Bruno Mars</div></article>
+<article class="song" data-search="heaven bryan adams"><div class="title">Heaven</div><div class="artist">Bryan Adams</div></article>
+<article class="song" data-search="summer of &#x27;69 bryan adams"><div class="title">Summer Of &#x27;69</div><div class="artist">Bryan Adams</div></article>
+<h2 class="letter" data-letter="C">C</h2>
+<article class="song" data-search="cigarette daydreams cage the elephant"><div class="title">Cigarette Daydreams</div><div class="artist">Cage The Elephant</div></article>
+<article class="song" data-search="slide (feat. frank ocean &amp; migos) calvin harris, frank ocean"><div class="title">Slide (feat. Frank Ocean &amp; Migos)</div><div class="artist">Calvin Harris, Frank Ocean</div></article>
+<article class="song" data-search="forget you ceelo green"><div class="title">Forget You</div><div class="artist">CeeLo Green</div></article>
+<article class="song" data-search="good luck, babe! chappell roan"><div class="title">Good Luck, Babe!</div><div class="artist">Chappell Roan</div></article>
+<article class="song" data-search="wicked game chris isaak"><div class="title">Wicked Game</div><div class="artist">Chris Isaak</div></article>
+<article class="song" data-search="starting over chris stapleton"><div class="title">Starting Over</div><div class="artist">Chris Stapleton</div></article>
+<article class="song" data-search="tennessee whiskey chris stapleton"><div class="title">Tennessee Whiskey</div><div class="artist">Chris Stapleton</div></article>
+<article class="song" data-search="you should probably leave chris stapleton"><div class="title">You Should Probably Leave</div><div class="artist">Chris Stapleton</div></article>
+<article class="song" data-search="tubthumping chumbawamba"><div class="title">Tubthumping</div><div class="artist">Chumbawamba</div></article>
+<article class="song" data-search="&#x27;til you can&#x27;t cody johnson"><div class="title">&#x27;Til You Can&#x27;t</div><div class="artist">Cody Johnson</div></article>
+<article class="song" data-search="the scientist coldplay"><div class="title">The Scientist</div><div class="artist">Coldplay</div></article>
+<article class="song" data-search="viva la vida coldplay"><div class="title">Viva La Vida</div><div class="artist">Coldplay</div></article>
+<article class="song" data-search="yellow coldplay"><div class="title">Yellow</div><div class="artist">Coldplay</div></article>
+<article class="song" data-search="thirteen silver dollars colter wall"><div class="title">Thirteen Silver Dollars</div><div class="artist">Colter Wall</div></article>
+<article class="song" data-search="accidentally in love counting crows"><div class="title">Accidentally In Love</div><div class="artist">Counting Crows</div></article>
+<article class="song" data-search="big yellow taxi counting crows"><div class="title">Big Yellow Taxi</div><div class="artist">Counting Crows</div></article>
+<article class="song" data-search="bad moon rising creedence clearwater revival"><div class="title">Bad Moon Rising</div><div class="artist">Creedence Clearwater Revival</div></article>
+<article class="song" data-search="have you ever seen the rain creedence clearwater revival"><div class="title">Have You Ever Seen The Rain</div><div class="artist">Creedence Clearwater Revival</div></article>
+<article class="song" data-search="lodi creedence clearwater revival"><div class="title">Lodi</div><div class="artist">Creedence Clearwater Revival</div></article>
+<article class="song" data-search="lookin&#x27; out my back door creedence clearwater revival"><div class="title">Lookin&#x27; Out My Back Door</div><div class="artist">Creedence Clearwater Revival</div></article>
+<article class="song" data-search="don&#x27;t dream it&#x27;s over crowded house"><div class="title">Don&#x27;t Dream It&#x27;s Over</div><div class="artist">Crowded House</div></article>
+<article class="song" data-search="time after time cyndi lauper"><div class="title">Time After Time</div><div class="artist">Cyndi Lauper</div></article>
+<h2 class="letter" data-letter="D">D</h2>
+<article class="song" data-search="same old lang syne dan fogelberg"><div class="title">Same Old Lang Syne</div><div class="artist">Dan Fogelberg</div></article>
+<article class="song" data-search="alright darius rucker"><div class="title">Alright</div><div class="artist">Darius Rucker</div></article>
+<article class="song" data-search="wagon wheel darius rucker"><div class="title">Wagon Wheel</div><div class="artist">Darius Rucker</div></article>
+<article class="song" data-search="rich girl daryl hall &amp; john oates"><div class="title">Rich Girl</div><div class="artist">Daryl Hall &amp; John Oates</div></article>
+<article class="song" data-search="crash into me dave matthews band"><div class="title">Crash into Me</div><div class="artist">Dave Matthews Band</div></article>
+<article class="song" data-search="dust on the bottle david lee murphy"><div class="title">Dust On The Bottle</div><div class="artist">David Lee Murphy</div></article>
+<article class="song" data-search="i will follow you into the dark death cab for cutie"><div class="title">I Will Follow You into the Dark</div><div class="artist">Death Cab for Cutie</div></article>
+<article class="song" data-search="roll to me del amitri"><div class="title">Roll To Me</div><div class="artist">Del Amitri</div></article>
+<article class="song" data-search="end of beginning djo"><div class="title">End of Beginning</div><div class="artist">Djo</div></article>
+<article class="song" data-search="drift away dobie gray"><div class="title">Drift Away</div><div class="artist">Dobie Gray</div></article>
+<article class="song" data-search="9 to 5 dolly parton"><div class="title">9 to 5</div><div class="artist">Dolly Parton</div></article>
+<article class="song" data-search="islands in the stream dolly parton, kenny rogers"><div class="title">Islands In the Stream</div><div class="artist">Dolly Parton, Kenny Rogers</div></article>
+<article class="song" data-search="3 nights dominic fike"><div class="title">3 Nights</div><div class="artist">Dominic Fike</div></article>
+<article class="song" data-search="babydoll dominic fike"><div class="title">Babydoll</div><div class="artist">Dominic Fike</div></article>
+<article class="song" data-search="the boys of summer don henley"><div class="title">The Boys Of Summer</div><div class="artist">Don Henley</div></article>
+<article class="song" data-search="hold on, we&#x27;re going home drake;majid jordan"><div class="title">Hold On, We&#x27;re Going Home</div><div class="artist">Drake;Majid Jordan</div></article>
+<h2 class="letter" data-letter="E">E</h2>
+<article class="song" data-search="peaceful easy feeling eagles"><div class="title">Peaceful Easy Feeling</div><div class="artist">Eagles</div></article>
+<article class="song" data-search="take it easy eagles"><div class="title">Take It Easy</div><div class="artist">Eagles</div></article>
+<article class="song" data-search="tequila sunrise eagles"><div class="title">Tequila Sunrise</div><div class="artist">Eagles</div></article>
+<article class="song" data-search="shape of you ed sheeran"><div class="title">Shape of You</div><div class="artist">Ed Sheeran</div></article>
+<article class="song" data-search="thinking out loud ed sheeran"><div class="title">Thinking out Loud</div><div class="artist">Ed Sheeran</div></article>
+<article class="song" data-search="i don&#x27;t care (with justin bieber) ed sheeran &amp; justin bieber"><div class="title">I Don&#x27;t Care (with Justin Bieber)</div><div class="artist">Ed Sheeran &amp; Justin Bieber</div></article>
+<article class="song" data-search="love grows (where my rosemary goes) edison lighthouse"><div class="title">Love Grows (Where My Rosemary Goes)</div><div class="artist">Edison Lighthouse</div></article>
+<article class="song" data-search="choosin&#x27; texas ella langley"><div class="title">Choosin&#x27; Texas</div><div class="artist">Ella Langley</div></article>
+<article class="song" data-search="rocket man (i think it&#x27;s going to be a long, long time) elton john"><div class="title">Rocket Man (I Think It&#x27;s Going To Be A Long, Long Time)</div><div class="artist">Elton John</div></article>
+<article class="song" data-search="can&#x27;t help falling in love elvis presley"><div class="title">Can&#x27;t Help Falling in Love</div><div class="artist">Elvis Presley</div></article>
+<article class="song" data-search="drink in my hand eric church"><div class="title">Drink In My Hand</div><div class="artist">Eric Church</div></article>
+<article class="song" data-search="change the world eric clapton"><div class="title">Change the World</div><div class="artist">Eric Clapton</div></article>
+<article class="song" data-search="lay down sally eric clapton"><div class="title">Lay Down Sally</div><div class="artist">Eric Clapton</div></article>
+<h2 class="letter" data-letter="F">F</h2>
+<article class="song" data-search="ooh la la faces"><div class="title">Ooh La La</div><div class="artist">Faces</div></article>
+<article class="song" data-search="landslide fleetwood mac"><div class="title">Landslide</div><div class="artist">Fleetwood Mac</div></article>
+<article class="song" data-search="can&#x27;t take my eyes o you frankie valli"><div class="title">Can&#x27;t Take My Eyes o You</div><div class="artist">Frankie Valli</div></article>
+<h2 class="letter" data-letter="G">G</h2>
+<article class="song" data-search="friends in low places garth brooks tribute"><div class="title">Friends in Low Places</div><div class="artist">Garth Brooks Tribute</div></article>
+<article class="song" data-search="chariot gavin degraw"><div class="title">Chariot</div><div class="artist">Gavin DeGraw</div></article>
+<article class="song" data-search="i don&#x27;t want to be gavin degraw"><div class="title">I Don&#x27;t Want to Be</div><div class="artist">Gavin DeGraw</div></article>
+<article class="song" data-search="budapest george ezra"><div class="title">Budapest</div><div class="artist">George Ezra</div></article>
+<article class="song" data-search="all my ex&#x27;s live in texas george strait"><div class="title">All My Ex&#x27;s Live In Texas</div><div class="artist">George Strait</div></article>
+<article class="song" data-search="amarillo by morning george strait"><div class="title">Amarillo By Morning</div><div class="artist">George Strait</div></article>
+<article class="song" data-search="here for a good time george strait"><div class="title">Here For A Good Time</div><div class="artist">George Strait</div></article>
+<article class="song" data-search="i just want to dance with you george strait"><div class="title">I Just Want To Dance With You</div><div class="artist">George Strait</div></article>
+<article class="song" data-search="write this down george strait"><div class="title">Write This Down</div><div class="artist">George Strait</div></article>
+<article class="song" data-search="good riddance (time of your life) green day"><div class="title">Good Riddance (Time of Your Life)</div><div class="artist">Green Day</div></article>
+<article class="song" data-search="sweet child o&#x27; mine guns n&#x27; roses"><div class="title">Sweet Child O&#x27; Mine</div><div class="artist">Guns N&#x27; Roses</div></article>
+<h2 class="letter" data-letter="H">H</h2>
+<article class="song" data-search="family tradition hank williams, jr."><div class="title">Family Tradition</div><div class="artist">Hank Williams, Jr.</div></article>
+<article class="song" data-search="as it was harry styles"><div class="title">As It Was</div><div class="artist">Harry Styles</div></article>
+<article class="song" data-search="bad liver and a broken heart hayes carll"><div class="title">Bad Liver And A Broken Heart</div><div class="artist">Hayes Carll</div></article>
+<article class="song" data-search="drunken poet&#x27;s dream hayes carll"><div class="title">Drunken Poet&#x27;s Dream</div><div class="artist">Hayes Carll</div></article>
+<article class="song" data-search="collide howie day"><div class="title">Collide</div><div class="artist">Howie Day</div></article>
+<article class="song" data-search="painted you pretty hudson westbrook"><div class="title">Painted You Pretty</div><div class="artist">Hudson Westbrook</div></article>
+<h2 class="letter" data-letter="J">J</h2>
+<article class="song" data-search="banana pancakes jack johnson"><div class="title">Banana Pancakes</div><div class="artist">Jack Johnson</div></article>
+<article class="song" data-search="better together jack johnson"><div class="title">Better Together</div><div class="artist">Jack Johnson</div></article>
+<article class="song" data-search="bubble toes jack johnson"><div class="title">Bubble Toes</div><div class="artist">Jack Johnson</div></article>
+<article class="song" data-search="flake jack johnson"><div class="title">Flake</div><div class="artist">Jack Johnson</div></article>
+<article class="song" data-search="sitting, waiting, wishing jack johnson"><div class="title">Sitting, Waiting, Wishing</div><div class="artist">Jack Johnson</div></article>
+<article class="song" data-search="taylor jack johnson"><div class="title">Taylor</div><div class="artist">Jack Johnson</div></article>
+<article class="song" data-search="upside down jack johnson"><div class="title">Upside Down</div><div class="artist">Jack Johnson</div></article>
+<article class="song" data-search="doctor my eyes jackson browne"><div class="title">Doctor My Eyes</div><div class="artist">Jackson Browne</div></article>
+<article class="song" data-search="two fingers jake bugg"><div class="title">Two Fingers</div><div class="artist">Jake Bugg</div></article>
+<article class="song" data-search="you&#x27;re beautiful james blunt"><div class="title">You&#x27;re Beautiful</div><div class="artist">James Blunt</div></article>
+<article class="song" data-search="carolina in my mind james taylor"><div class="title">Carolina in My Mind</div><div class="artist">James Taylor</div></article>
+<article class="song" data-search="fire and rain james taylor"><div class="title">Fire and Rain</div><div class="artist">James Taylor</div></article>
+<article class="song" data-search="sweet baby james james taylor"><div class="title">Sweet Baby James</div><div class="artist">James Taylor</div></article>
+<article class="song" data-search="you&#x27;ve got a friend james taylor"><div class="title">You&#x27;ve Got a Friend</div><div class="artist">James Taylor</div></article>
+<article class="song" data-search="i&#x27;m yours jason mraz"><div class="title">I&#x27;m Yours</div><div class="artist">Jason Mraz</div></article>
+<article class="song" data-search="you and i both jason mraz"><div class="title">You and I Both</div><div class="artist">Jason Mraz</div></article>
+<article class="song" data-search="lover, lover jerrod niemann"><div class="title">Lover, Lover</div><div class="artist">Jerrod Niemann</div></article>
+<article class="song" data-search="beautiful soul jesse mccartney"><div class="title">Beautiful Soul</div><div class="artist">Jesse McCartney</div></article>
+<article class="song" data-search="bad, bad leroy brown jim croce"><div class="title">Bad, Bad Leroy Brown</div><div class="artist">Jim Croce</div></article>
+<article class="song" data-search="margaritaville jimmy bu ett"><div class="title">Margaritaville</div><div class="artist">Jimmy Bu ett</div></article>
+<article class="song" data-search="tequila makes her clothes fall o joe nichols"><div class="title">Tequila Makes Her Clothes Fall O</div><div class="artist">Joe Nichols</div></article>
+<article class="song" data-search="take me home, country roads john denver"><div class="title">Take Me Home, Country Roads</div><div class="artist">John Denver</div></article>
+<article class="song" data-search="all of me john legend"><div class="title">All of Me</div><div class="artist">John Legend</div></article>
+<article class="song" data-search="daughters john mayer"><div class="title">Daughters</div><div class="artist">John Mayer</div></article>
+<article class="song" data-search="i don&#x27;t trust myself (with loving you) john mayer"><div class="title">I Don&#x27;t Trust Myself (With Loving You)</div><div class="artist">John Mayer</div></article>
+<article class="song" data-search="new light john mayer"><div class="title">New Light</div><div class="artist">John Mayer</div></article>
+<article class="song" data-search="no such thing john mayer"><div class="title">No Such Thing</div><div class="artist">John Mayer</div></article>
+<article class="song" data-search="say john mayer"><div class="title">Say</div><div class="artist">John Mayer</div></article>
+<article class="song" data-search="slow dancing in a burning room john mayer"><div class="title">Slow Dancing in a Burning Room</div><div class="artist">John Mayer</div></article>
+<article class="song" data-search="something like olivia john mayer"><div class="title">Something Like Olivia</div><div class="artist">John Mayer</div></article>
+<article class="song" data-search="waiting on the world to change john mayer"><div class="title">Waiting On the World to Change</div><div class="artist">John Mayer</div></article>
+<article class="song" data-search="who says john mayer"><div class="title">Who Says</div><div class="artist">John Mayer</div></article>
+<article class="song" data-search="why georgia john mayer"><div class="title">Why Georgia</div><div class="artist">John Mayer</div></article>
+<article class="song" data-search="your body is a wonderland john mayer"><div class="title">Your Body Is a Wonderland</div><div class="artist">John Mayer</div></article>
+<article class="song" data-search="folsom prison blues johnny cash"><div class="title">Folsom Prison Blues</div><div class="artist">Johnny Cash</div></article>
+<article class="song" data-search="jackson johnny cash"><div class="title">Jackson</div><div class="artist">Johnny Cash</div></article>
+<article class="song" data-search="ring of fire johnny cash"><div class="title">Ring of Fire</div><div class="artist">Johnny Cash</div></article>
+<article class="song" data-search="why don&#x27;t we just dance josh turner"><div class="title">Why Don&#x27;t We Just Dance</div><div class="artist">Josh Turner</div></article>
+<article class="song" data-search="your man josh turner"><div class="title">Your Man</div><div class="artist">Josh Turner</div></article>
+<article class="song" data-search="don&#x27;t stop believin&#x27; journey"><div class="title">Don&#x27;t Stop Believin&#x27;</div><div class="artist">Journey</div></article>
+<article class="song" data-search="daisies justin bieber"><div class="title">Daisies</div><div class="artist">Justin Bieber</div></article>
+<article class="song" data-search="love yourself justin bieber"><div class="title">Love Yourself</div><div class="artist">Justin Bieber</div></article>
+<h2 class="letter" data-letter="K">K</h2>
+<article class="song" data-search="somewhere only we know keane"><div class="title">Somewhere Only We Know</div><div class="artist">Keane</div></article>
+<article class="song" data-search="you’ll think of me keith urban"><div class="title">You’ll Think Of Me</div><div class="artist">Keith Urban</div></article>
+<article class="song" data-search="when you say nothing at all keith whitley"><div class="title">When You Say Nothing at All</div><div class="artist">Keith Whitley</div></article>
+<article class="song" data-search="my love for you is a straight line ken yates"><div class="title">My Love for You Is a Straight Line</div><div class="artist">Ken Yates</div></article>
+<article class="song" data-search="the gambler kenny rogers"><div class="title">The Gambler</div><div class="artist">Kenny Rogers</div></article>
+<article class="song" data-search="dancing in the moonlight king harvest"><div class="title">Dancing in the Moonlight</div><div class="artist">King Harvest</div></article>
+<article class="song" data-search="sunday mornin&#x27; comin&#x27; down kris kristo erson"><div class="title">Sunday Mornin&#x27; Comin&#x27; Down</div><div class="artist">Kris Kristo erson</div></article>
+<h2 class="letter" data-letter="L">L</h2>
+<article class="song" data-search="always remember us this way lady gaga"><div class="title">Always Remember Us This Way</div><div class="artist">Lady Gaga</div></article>
+<article class="song" data-search="i like me better lauv"><div class="title">I Like Me Better</div><div class="artist">Lauv</div></article>
+<article class="song" data-search="bleeding love leona lewis"><div class="title">Bleeding Love</div><div class="artist">Leona Lewis</div></article>
+<article class="song" data-search="you and me lifehouse"><div class="title">You And Me</div><div class="artist">Lifehouse</div></article>
+<article class="song" data-search="danny&#x27;s song loggins &amp; messina"><div class="title">Danny&#x27;s Song</div><div class="artist">Loggins &amp; Messina</div></article>
+<article class="song" data-search="if i had a boat lyle lovett"><div class="title">If I Had A Boat</div><div class="artist">Lyle Lovett</div></article>
+<article class="song" data-search="sweet home alabama lynyrd skynyrd"><div class="title">Sweet Home Alabama</div><div class="artist">Lynyrd Skynyrd</div></article>
+<h2 class="letter" data-letter="M">M</h2>
+<article class="song" data-search="rude magic!"><div class="title">Rude</div><div class="artist">MAGIC!</div></article>
+<article class="song" data-search="memories maroon 5"><div class="title">Memories</div><div class="artist">Maroon 5</div></article>
+<article class="song" data-search="she will be loved maroon 5"><div class="title">She Will Be Loved</div><div class="artist">Maroon 5</div></article>
+<article class="song" data-search="this love maroon 5"><div class="title">This Love</div><div class="artist">Maroon 5</div></article>
+<article class="song" data-search="won&#x27;t go home without you maroon 5"><div class="title">Won&#x27;t Go Home Without You</div><div class="artist">Maroon 5</div></article>
+<article class="song" data-search="3am matchbox twenty"><div class="title">3AM</div><div class="artist">Matchbox Twenty</div></article>
+<article class="song" data-search="bright lights matchbox twenty"><div class="title">Bright Lights</div><div class="artist">Matchbox Twenty</div></article>
+<article class="song" data-search="unwell matchbox twenty"><div class="title">Unwell</div><div class="artist">Matchbox Twenty</div></article>
+<article class="song" data-search="come on get higher matt nathanson"><div class="title">Come On Get Higher</div><div class="artist">Matt Nathanson</div></article>
+<article class="song" data-search="mama tried merle haggard &amp; the strangers"><div class="title">Mama Tried</div><div class="artist">Merle Haggard &amp; The Strangers</div></article>
+<article class="song" data-search="everything michael bublé"><div class="title">Everything</div><div class="artist">Michael Bublé</div></article>
+<article class="song" data-search="billie jean michael jackson"><div class="title">Billie Jean</div><div class="artist">Michael Jackson</div></article>
+<article class="song" data-search="burn out midland"><div class="title">Burn Out</div><div class="artist">Midland</div></article>
+<article class="song" data-search="cheatin’ songs midland"><div class="title">Cheatin’ Songs</div><div class="artist">Midland</div></article>
+<article class="song" data-search="drinkin&#x27; problem midland"><div class="title">Drinkin&#x27; Problem</div><div class="artist">Midland</div></article>
+<article class="song" data-search="flowers miley cyrus"><div class="title">Flowers</div><div class="artist">Miley Cyrus</div></article>
+<article class="song" data-search="the climb miley cyrus"><div class="title">The Climb</div><div class="artist">Miley Cyrus</div></article>
+<article class="song" data-search="classic mkto"><div class="title">Classic</div><div class="artist">MKTO</div></article>
+<article class="song" data-search="i melt with you modern english"><div class="title">I Melt with You</div><div class="artist">Modern English</div></article>
+<article class="song" data-search="love somebody morgan wallen"><div class="title">Love Somebody</div><div class="artist">Morgan Wallen</div></article>
+<article class="song" data-search="money on me morgan wallen"><div class="title">Money On Me</div><div class="artist">Morgan Wallen</div></article>
+<article class="song" data-search="one thing at a time morgan wallen"><div class="title">One Thing At A Time</div><div class="artist">Morgan Wallen</div></article>
+<article class="song" data-search="whiskey glasses morgan wallen"><div class="title">Whiskey Glasses</div><div class="artist">Morgan Wallen</div></article>
+<h2 class="letter" data-letter="N">N</h2>
+<article class="song" data-search="torn natalie imbruglia"><div class="title">Torn</div><div class="artist">Natalie Imbruglia</div></article>
+<article class="song" data-search="sweet caroline neil diamond"><div class="title">Sweet Caroline</div><div class="artist">Neil Diamond</div></article>
+<article class="song" data-search="harvest moon neil young"><div class="title">Harvest Moon</div><div class="artist">Neil Young</div></article>
+<article class="song" data-search="slow hands niall horan"><div class="title">Slow Hands</div><div class="artist">Niall Horan</div></article>
+<article class="song" data-search="absolutely (story of a girl) nine days"><div class="title">Absolutely (Story of a Girl)</div><div class="artist">Nine Days</div></article>
+<article class="song" data-search="stick season noah kahan"><div class="title">Stick Season</div><div class="artist">Noah Kahan</div></article>
+<article class="song" data-search="you’re gonna go far noah kahan"><div class="title">You’re Gonna Go Far</div><div class="artist">Noah Kahan</div></article>
+<article class="song" data-search="don&#x27;t know why norah jones"><div class="title">Don&#x27;t Know Why</div><div class="artist">Norah Jones</div></article>
+<h2 class="letter" data-letter="O">O</h2>
+<article class="song" data-search="champagne supernova oasis"><div class="title">Champagne Supernova</div><div class="artist">Oasis</div></article>
+<article class="song" data-search="wonderwall oasis"><div class="title">Wonderwall</div><div class="artist">Oasis</div></article>
+<article class="song" data-search="break up with him old dominion"><div class="title">Break Up with Him</div><div class="artist">Old Dominion</div></article>
+<article class="song" data-search="night changes one direction"><div class="title">Night Changes</div><div class="artist">One Direction</div></article>
+<article class="song" data-search="counting stars onerepublic"><div class="title">Counting Stars</div><div class="artist">OneRepublic</div></article>
+<article class="song" data-search="(sittin&#x27; on) the dock of the bay otis redding"><div class="title">(Sittin&#x27; On) the Dock of the Bay</div><div class="artist">Otis Redding</div></article>
+<h2 class="letter" data-letter="P">P</h2>
+<article class="song" data-search="the only exception paramore"><div class="title">The Only Exception</div><div class="artist">Paramore</div></article>
+<article class="song" data-search="wave on wave pat green"><div class="title">Wave on Wave</div><div class="artist">Pat Green</div></article>
+<article class="song" data-search="you can call me al paul simon"><div class="title">You Can Call Me Al</div><div class="artist">Paul Simon</div></article>
+<article class="song" data-search="last kiss pearl jam"><div class="title">Last Kiss</div><div class="artist">Pearl Jam</div></article>
+<article class="song" data-search="against all odds (take a look at me now) phil collins"><div class="title">Against All Odds (Take a Look at Me Now)</div><div class="artist">Phil Collins</div></article>
+<article class="song" data-search="hey there delilah plain white t&#x27;s"><div class="title">Hey There Delilah</div><div class="artist">Plain White T&#x27;s</div></article>
+<article class="song" data-search="i had some help (feat. morgan wallen) post malone"><div class="title">I Had Some Help (Feat. Morgan Wallen)</div><div class="artist">Post Malone</div></article>
+<article class="song" data-search="sun ower post malone, swae lee"><div class="title">Sun ower</div><div class="artist">Post Malone, Swae Lee</div></article>
+<h2 class="letter" data-letter="R">R</h2>
+<article class="song" data-search="creep radiohead"><div class="title">Creep</div><div class="artist">Radiohead</div></article>
+<article class="song" data-search="fake plastic trees radiohead"><div class="title">Fake Plastic Trees</div><div class="artist">Radiohead</div></article>
+<article class="song" data-search="high and dry radiohead"><div class="title">High and Dry</div><div class="artist">Radiohead</div></article>
+<article class="song" data-search="kiss me in the dark randy rogers band"><div class="title">Kiss Me In The Dark</div><div class="artist">Randy Rogers Band</div></article>
+<article class="song" data-search="forever and ever, amen randy travis"><div class="title">Forever and Ever, Amen</div><div class="artist">Randy Travis</div></article>
+<article class="song" data-search="bless the broken road rascal flatts"><div class="title">Bless The Broken Road</div><div class="artist">Rascal Flatts</div></article>
+<article class="song" data-search="these days rascal flatts"><div class="title">These Days</div><div class="artist">Rascal Flatts</div></article>
+<article class="song" data-search="worst way riley green"><div class="title">Worst Way</div><div class="artist">Riley Green</div></article>
+<article class="song" data-search="the road goes on forever robert earl keen"><div class="title">The Road Goes On Forever</div><div class="artist">Robert Earl Keen</div></article>
+<article class="song" data-search="sally, when the wine runs out role model"><div class="title">Sally, When The Wine Runs Out</div><div class="artist">ROLE MODEL</div></article>
+<h2 class="letter" data-letter="S">S</h2>
+<article class="song" data-search="(what a) wonderful world sam cooke"><div class="title">(What A) Wonderful World</div><div class="artist">Sam Cooke</div></article>
+<article class="song" data-search="you&#x27;re still the one shania twain"><div class="title">You&#x27;re Still The One</div><div class="artist">Shania Twain</div></article>
+<article class="song" data-search="there&#x27;s nothing holdin&#x27; me back shawn mendes"><div class="title">There&#x27;s Nothing Holdin&#x27; Me Back</div><div class="artist">Shawn Mendes</div></article>
+<article class="song" data-search="two dozen roses shenandoah"><div class="title">Two Dozen Roses</div><div class="artist">Shenandoah</div></article>
+<article class="song" data-search="all for you sister hazel"><div class="title">All For You</div><div class="artist">Sister Hazel</div></article>
+<article class="song" data-search="all star smash mouth"><div class="title">All Star</div><div class="artist">Smash Mouth</div></article>
+<article class="song" data-search="the joker steve miller band"><div class="title">The Joker</div><div class="artist">Steve Miller Band</div></article>
+<article class="song" data-search="santeria sublime"><div class="title">Santeria</div><div class="artist">Sublime</div></article>
+<h2 class="letter" data-letter="T">T</h2>
+<article class="song" data-search="i bet you think about me (feat. chris stapleton) taylor swift"><div class="title">I Bet You Think About Me (feat. Chris Stapleton)</div><div class="artist">Taylor Swift</div></article>
+<article class="song" data-search="our song taylor swift"><div class="title">Our Song</div><div class="artist">Taylor Swift</div></article>
+<article class="song" data-search="somebody else the 1975"><div class="title">Somebody Else</div><div class="artist">The 1975</div></article>
+<article class="song" data-search="atlantic city the band"><div class="title">Atlantic City</div><div class="artist">The Band</div></article>
+<article class="song" data-search="ophelia the band"><div class="title">Ophelia</div><div class="artist">The Band</div></article>
+<article class="song" data-search="the weight the band"><div class="title">The Weight</div><div class="artist">The Band</div></article>
+<article class="song" data-search="all my loving the beatles"><div class="title">All My Loving</div><div class="artist">The Beatles</div></article>
+<article class="song" data-search="blackbird the beatles"><div class="title">Blackbird</div><div class="artist">The Beatles</div></article>
+<article class="song" data-search="i want to hold your hand the beatles"><div class="title">I Want To Hold Your Hand</div><div class="artist">The Beatles</div></article>
+<article class="song" data-search="something the beatles"><div class="title">Something</div><div class="artist">The Beatles</div></article>
+<article class="song" data-search="there&#x27;s your trouble the chicks"><div class="title">There&#x27;s Your Trouble</div><div class="artist">The Chicks</div></article>
+<article class="song" data-search="should i stay or should i go the clash"><div class="title">Should I Stay or Should I Go</div><div class="artist">The Clash</div></article>
+<article class="song" data-search="friday i&#x27;m in love the cure"><div class="title">Friday I&#x27;m in Love</div><div class="artist">The Cure</div></article>
+<article class="song" data-search="just like heaven the cure"><div class="title">Just like Heaven</div><div class="artist">The Cure</div></article>
+<article class="song" data-search="fool&#x27;s gold the damn quails"><div class="title">Fool&#x27;s Gold</div><div class="artist">The Damn Quails</div></article>
+<article class="song" data-search="build me up buttercup the foundations"><div class="title">Build Me Up Buttercup</div><div class="artist">The Foundations</div></article>
+<article class="song" data-search="how to save a life the fray"><div class="title">How to Save a Life</div><div class="artist">The Fray</div></article>
+<article class="song" data-search="iris the goo goo dolls"><div class="title">Iris</div><div class="artist">The Goo Goo Dolls</div></article>
+<article class="song" data-search="slide the goo goo dolls"><div class="title">Slide</div><div class="artist">The Goo Goo Dolls</div></article>
+<article class="song" data-search="mr. brightside the killers"><div class="title">Mr. Brightside</div><div class="artist">The Killers</div></article>
+<article class="song" data-search="ho hey the lumineers"><div class="title">Ho Hey</div><div class="artist">The Lumineers</div></article>
+<article class="song" data-search="your love the out eld"><div class="title">Your Love</div><div class="artist">The Out eld</div></article>
+<article class="song" data-search="every breath you take the police"><div class="title">Every Breath You Take</div><div class="artist">The Police</div></article>
+<article class="song" data-search="wondering why the red clay strays"><div class="title">Wondering Why</div><div class="artist">The Red Clay Strays</div></article>
+<article class="song" data-search="breakeven the script"><div class="title">Breakeven</div><div class="artist">The Script</div></article>
+<article class="song" data-search="the man who can&#x27;t be moved the script"><div class="title">The Man Who Can&#x27;t Be Moved</div><div class="artist">The Script</div></article>
+<article class="song" data-search="my girl the temptations"><div class="title">My Girl</div><div class="artist">The Temptations</div></article>
+<article class="song" data-search="jumper third eye blind"><div class="title">Jumper</div><div class="artist">Third Eye Blind</div></article>
+<article class="song" data-search="something like that tim mcgraw"><div class="title">Something Like That</div><div class="artist">Tim McGraw</div></article>
+<article class="song" data-search="no scrubs tlc"><div class="title">No Scrubs</div><div class="artist">TLC</div></article>
+<article class="song" data-search="i won&#x27;t back down tom petty"><div class="title">I Won&#x27;t Back Down</div><div class="artist">Tom Petty</div></article>
+<article class="song" data-search="wild owers tom petty"><div class="title">Wild owers</div><div class="artist">Tom Petty</div></article>
+<article class="song" data-search="breakdown tom petty and the heartbreakers"><div class="title">Breakdown</div><div class="artist">Tom Petty and the Heartbreakers</div></article>
+<article class="song" data-search="into the great wide open tom petty and the heartbreakers"><div class="title">Into The Great Wide Open</div><div class="artist">Tom Petty and the Heartbreakers</div></article>
+<article class="song" data-search="mary jane&#x27;s last dance tom petty and the heartbreakers"><div class="title">Mary Jane&#x27;s Last Dance</div><div class="artist">Tom Petty and the Heartbreakers</div></article>
+<article class="song" data-search="drops of jupiter (tell me) train"><div class="title">Drops of Jupiter (Tell Me)</div><div class="artist">Train</div></article>
+<article class="song" data-search="meet virginia train"><div class="title">Meet Virginia</div><div class="artist">Train</div></article>
+<article class="song" data-search="handle with care traveling wilburys"><div class="title">Handle With Care</div><div class="artist">Traveling Wilburys</div></article>
+<article class="song" data-search="it&#x27;s a great day to be alive travis tritt"><div class="title">It&#x27;s A Great Day To Be Alive</div><div class="artist">Travis Tritt</div></article>
+<article class="song" data-search="all your&#x27;n tyler childers"><div class="title">All Your&#x27;n</div><div class="artist">Tyler Childers</div></article>
+<article class="song" data-search="feathered indians tyler childers"><div class="title">Feathered Indians</div><div class="artist">Tyler Childers</div></article>
+<article class="song" data-search="whitehouse road tyler childers"><div class="title">Whitehouse Road</div><div class="artist">Tyler Childers</div></article>
+<h2 class="letter" data-letter="U">U</h2>
+<article class="song" data-search="i still haven&#x27;t found what i&#x27;m looking for u2"><div class="title">I Still Haven&#x27;t Found What I&#x27;m Looking For</div><div class="artist">U2</div></article>
+<article class="song" data-search="follow me uncle kracker"><div class="title">Follow Me</div><div class="artist">Uncle Kracker</div></article>
+<h2 class="letter" data-letter="V">V</h2>
+<article class="song" data-search="brown eyed girl van morrison"><div class="title">Brown Eyed Girl</div><div class="artist">Van Morrison</div></article>
+<article class="song" data-search="riptide vance joy"><div class="title">Riptide</div><div class="artist">Vance Joy</div></article>
+<h2 class="letter" data-letter="W">W</h2>
+<article class="song" data-search="shut up and dance walk the moon"><div class="title">Shut Up and Dance</div><div class="artist">WALK THE MOON</div></article>
+<article class="song" data-search="mammas don&#x27;t let your babies grow up to be cowboys waylon jennings, willie nelson"><div class="title">Mammas Don&#x27;t Let Your Babies Grow up to Be Cowboys</div><div class="artist">Waylon Jennings, Willie Nelson</div></article>
+<article class="song" data-search="island in the sun weezer"><div class="title">Island In The Sun</div><div class="artist">Weezer</div></article>
+<article class="song" data-search="teenage dirtbag wheatus"><div class="title">Teenage Dirtbag</div><div class="artist">Wheatus</div></article>
+<article class="song" data-search="i wanna dance with somebody (who loves me) whitney houston"><div class="title">I Wanna Dance with Somebody (Who Loves Me)</div><div class="artist">Whitney Houston</div></article>
+<article class="song" data-search="i gotta get drunk willie nelson"><div class="title">I Gotta Get Drunk</div><div class="artist">Willie Nelson</div></article>
+<h2 class="letter" data-letter="Y">Y</h2>
+<article class="song" data-search="another saturday night yusuf / cat stevens"><div class="title">Another Saturday Night</div><div class="artist">Yusuf / Cat Stevens</div></article>
+<h2 class="letter" data-letter="Z">Z</h2>
+<article class="song" data-search="chicken fried zac brown band"><div class="title">Chicken Fried</div><div class="artist">Zac Brown Band</div></article>
+<article class="song" data-search="toes zac brown band"><div class="title">Toes</div><div class="artist">Zac Brown Band</div></article>
+<article class="song" data-search="i never lie zach top"><div class="title">I Never Lie</div><div class="artist">Zach Top</div></article>
+</div><div class="empty" id="empty">No songs found. Try another search.</div></main>
+<script>
+(function(){
+ const input=document.getElementById('search');
+ const list=document.getElementById('list');
+ const count=document.getElementById('count');
+ const empty=document.getElementById('empty');
+ const songs=Array.from(list.querySelectorAll('.song'));
+ const letters=Array.from(list.querySelectorAll('.letter'));
+ function render(){
+  const q=input.value.trim().toLocaleLowerCase();
+  let shown=0;
+  songs.forEach(song=>{
+   const match=song.dataset.search.includes(q);
+   song.hidden=!match;
+   if(match) shown++;
+  });
+  letters.forEach(letter=>{
+   let node=letter.nextElementSibling, any=false;
+   while(node && !node.classList.contains('letter')){
+    if(node.classList.contains('song') && !node.hidden) any=true;
+    node=node.nextElementSibling;
+   }
+   letter.hidden=!any;
+  });
+  count.textContent=shown+' song'+(shown===1?'':'s');
+  empty.style.display=shown?'none':'block';
+ }
+ input.addEventListener('input',render);
+ document.getElementById('clear').addEventListener('click',()=>{input.value='';render();input.focus();});
+ render();
+})();
+</script>
+</body>
+</html>
